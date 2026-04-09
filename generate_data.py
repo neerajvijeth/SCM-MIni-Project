@@ -264,7 +264,9 @@ def generate_purchase_orders(suppliers_df):
         else:
             status = "Delivered"
             # Some early deliveries
-            early = random.randint(0, 3)
+            # Keep lead time strictly positive (no same-day delivery artifacts)
+            early_cap = min(3, max(expected_lead - 1, 0))
+            early = random.randint(0, early_cap)
             actual_delivery = expected_delivery - timedelta(days=early)
 
         purchase_orders.append({
@@ -556,7 +558,7 @@ def save_to_sqlite(suppliers_df, po_df, receipts_df, inspections_df, comms_df, c
 # ============================================================
 def main():
     print("=" * 60)
-    print("SCME P6 — Generating Synthetic Data")
+    print("SCME P6 - Generating Synthetic Data")
     print("=" * 60)
 
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -564,42 +566,42 @@ def main():
     # Step 1: Generate Suppliers
     print("\n[1/6] Generating Suppliers...")
     suppliers_df = generate_suppliers()
-    print(f"  → {len(suppliers_df)} suppliers generated")
+    print(f"  -> {len(suppliers_df)} suppliers generated")
 
     # Step 2: Generate Purchase Orders
     print("[2/6] Generating Purchase Orders...")
     po_df = generate_purchase_orders(suppliers_df)
-    print(f"  → {len(po_df)} purchase orders generated")
-    print(f"  → Status breakdown: {po_df['status'].value_counts().to_dict()}")
+    print(f"  -> {len(po_df)} purchase orders generated")
+    print(f"  -> Status breakdown: {po_df['status'].value_counts().to_dict()}")
 
     # Verify seasonal spike
     po_df_temp = po_df.copy()
     po_df_temp["month"] = pd.to_datetime(po_df_temp["order_date"]).dt.month
     q3_count = po_df_temp[po_df_temp["month"].isin([7, 8, 9])].shape[0]
     other_q_avg = po_df_temp[~po_df_temp["month"].isin([7, 8, 9])].shape[0] / 3
-    print(f"  → Q3 POs: {q3_count}, Avg other quarter POs: {other_q_avg:.0f} (Q3 spike ratio: {q3_count/max(other_q_avg,1):.1f}x)")
+    print(f"  -> Q3 POs: {q3_count}, Avg other quarter POs: {other_q_avg:.0f} (Q3 spike ratio: {q3_count/max(other_q_avg,1):.1f}x)")
 
     # Step 3: Generate Goods Receipts
     print("[3/6] Generating Goods Receipts...")
     receipts_df = generate_goods_receipts(po_df, suppliers_df)
-    print(f"  → {len(receipts_df)} goods receipts generated")
+    print(f"  -> {len(receipts_df)} goods receipts generated")
 
     # Step 4: Generate Quality Inspections
     print("[4/6] Generating Quality Inspections...")
     inspections_df = generate_quality_inspections(receipts_df, po_df, suppliers_df)
-    print(f"  → {len(inspections_df)} inspections generated")
-    print(f"  → Results: {inspections_df['inspection_result'].value_counts().to_dict()}")
+    print(f"  -> {len(inspections_df)} inspections generated")
+    print(f"  -> Results: {inspections_df['inspection_result'].value_counts().to_dict()}")
 
     # Step 5: Generate Communications
     print("[5/6] Generating Communications...")
     comms_df = generate_communications(suppliers_df)
-    print(f"  → {len(comms_df)} communications generated")
+    print(f"  -> {len(comms_df)} communications generated")
 
     # Step 6: Generate Contracts
     print("[6/6] Generating Contracts...")
     contracts_df = generate_contracts(suppliers_df)
-    print(f"  → {len(contracts_df)} contracts generated")
-    print(f"  → Renewal status: {contracts_df['renewal_status'].value_counts().to_dict()}")
+    print(f"  -> {len(contracts_df)} contracts generated")
+    print(f"  -> Renewal status: {contracts_df['renewal_status'].value_counts().to_dict()}")
 
     # Save CSVs
     print("\nSaving CSV files...")
@@ -614,7 +616,7 @@ def main():
     for filename, df in csv_files.items():
         filepath = os.path.join(base_dir, filename)
         df.to_csv(filepath, index=False)
-        print(f"  → {filename} ({len(df)} rows)")
+        print(f"  -> {filename} ({len(df)} rows)")
 
     # Save to SQLite
     print("\nCreating SQLite database...")

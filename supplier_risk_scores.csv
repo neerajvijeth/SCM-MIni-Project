@@ -1,30 +1,30 @@
 supplier_id,name,category,on_time_rate,avg_defect_rate,risk_score,risk_label,predicted_label
-SUP001,SteelCraft Industries,Raw Materials,93.75,1.29,4.09,Low,Low
-SUP002,CopperPoint Metals,Raw Materials,68.75,4.35,18.12,High,High
-SUP003,AlumTech Global,Raw Materials,100.0,1.04,2.02,Low,Low
-SUP004,RubberKing Compounds,Raw Materials,81.25,4.35,14.53,Medium,Medium
-SUP005,PlastiFlow Materials,Raw Materials,57.14,5.05,22.47,High,High
-SUP007,PackRight Solutions,Packaging,11.11,24.45,75.98,High,High
-SUP008,WrapMaster Inc,Packaging,93.33,4.31,10.05,Medium,Medium
-SUP009,BoxWorks International,Packaging,80.0,4.09,14.78,Medium,Medium
-SUP010,FoamSeal Corp,Packaging,70.0,6.33,20.3,High,High
-SUP011,PalletPro Logistics,Packaging,84.62,5.64,14.71,Medium,Medium
-SUP012,StretchGuard Packaging,Packaging,50.0,4.7,24.05,High,High
-SUP013,CircuitVault Electronics,Electronics,78.57,5.48,16.36,Medium,Medium
-SUP014,ChipNova Technologies,Electronics,22.22,24.15,71.09,High,High
-SUP015,SensorDynamics GmbH,Electronics,85.0,4.79,14.49,Medium,Medium
-SUP016,ConnectX Components,Electronics,88.89,5.62,13.65,Medium,Medium
-SUP017,MicroPulse Systems,Electronics,72.22,4.74,17.94,Medium,High
-SUP018,SiliconBridge Inc,Electronics,69.23,5.28,19.53,High,High
-SUP019,SwiftFreight Logistics,Logistics,78.95,4.6,15.46,Medium,Medium
-SUP020,WareHouse Pro,Logistics,68.42,4.8,18.44,High,High
-SUP021,LastMile Express,Logistics,26.67,24.15,68.45,High,High
-SUP022,ColdChain Solutions,Logistics,76.47,4.84,15.9,Medium,Medium
-SUP023,CrossDock Systems,Logistics,84.21,4.12,12.55,Medium,Medium
-SUP024,CustomsClear Agency,Logistics,76.92,5.03,17.03,Medium,Medium
-SUP025,SafetyFirst Supplies,MRO,76.0,4.13,15.05,High,High
-SUP026,ToolMaster Hardware,MRO,83.33,4.41,14.36,Medium,Medium
-SUP027,LubeWorks Industrial,MRO,100.0,5.1,10.3,Medium,Medium
-SUP028,SpareMax Components,MRO,58.33,4.53,21.47,High,High
-SUP029,FilterTech Solutions,MRO,80.0,4.58,14.81,Medium,Medium
-SUP030,WeldRight Corp,MRO,81.82,4.31,14.17,Medium,Medium
+SUP001,SteelCraft Industries,Raw Materials,93.75,0.92,4.09,Low,Low
+SUP002,CopperPoint Metals,Raw Materials,70.59,4.81,18.39,Medium,Medium
+SUP003,AlumTech Global,Raw Materials,100.0,1.1,1.92,Low,Low
+SUP004,RubberKing Compounds,Raw Materials,81.25,4.9,15.04,Medium,Medium
+SUP005,PlastiFlow Materials,Raw Materials,62.5,3.61,18.92,High,High
+SUP007,PackRight Solutions,Packaging,22.22,23.84,70.72,High,High
+SUP008,WrapMaster Inc,Packaging,93.33,4.22,10.12,Medium,Medium
+SUP009,BoxWorks International,Packaging,80.0,3.65,14.83,Medium,Medium
+SUP010,FoamSeal Corp,Packaging,72.22,6.71,20.25,Medium,Medium
+SUP011,PalletPro Logistics,Packaging,76.92,4.32,14.89,Medium,Medium
+SUP012,StretchGuard Packaging,Packaging,54.55,3.83,21.28,High,High
+SUP013,CircuitVault Electronics,Electronics,69.23,4.35,17.74,High,Medium
+SUP014,ChipNova Technologies,Electronics,25.0,24.29,70.32,High,High
+SUP015,SensorDynamics GmbH,Electronics,78.95,4.49,15.76,Medium,Medium
+SUP016,ConnectX Components,Electronics,84.21,4.59,13.27,Medium,Medium
+SUP017,MicroPulse Systems,Electronics,78.95,3.57,13.98,Medium,Medium
+SUP018,SiliconBridge Inc,Electronics,64.29,5.12,20.77,High,High
+SUP019,SwiftFreight Logistics,Logistics,83.33,3.92,13.28,Medium,Medium
+SUP020,WareHouse Pro,Logistics,65.0,5.46,20.87,High,High
+SUP021,LastMile Express,Logistics,35.71,25.76,69.08,High,High
+SUP022,ColdChain Solutions,Logistics,77.78,4.9,15.8,Medium,Medium
+SUP023,CrossDock Systems,Logistics,84.21,4.39,13.0,Medium,Medium
+SUP024,CustomsClear Agency,Logistics,81.82,4.05,13.58,Medium,Medium
+SUP025,SafetyFirst Supplies,MRO,78.26,4.83,15.2,Medium,Medium
+SUP026,ToolMaster Hardware,MRO,91.67,3.38,10.7,Medium,Medium
+SUP027,LubeWorks Industrial,MRO,94.44,4.83,11.45,Medium,Medium
+SUP028,SpareMax Components,MRO,58.33,3.69,20.28,High,High
+SUP029,FilterTech Solutions,MRO,82.35,4.11,13.33,Medium,Medium
+SUP030,WeldRight Corp,MRO,77.78,3.54,13.75,Medium,Medium

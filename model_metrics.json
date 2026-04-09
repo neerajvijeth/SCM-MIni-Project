@@ -1,0 +1,20 @@
+{
+  "model1_lead_time_forecasting": {
+    "rmse_lr": 3.6710588120018213,
+    "r2_lr": 0.7283064122417059,
+    "rmse_rf": 3.848673876084303,
+    "mae_rf": 2.8507906269800207,
+    "r2_rf": 0.7013799743738474,
+    "num_training_rows": 449
+  },
+  "model2_supplier_risk_classification": {
+    "accuracy": 0.8333333333333334,
+    "weighted_f1": 0.8148148148148148,
+    "num_suppliers_scored": 29
+  },
+  "model3_anomaly_detection": {
+    "total_receipts_analyzed": 449,
+    "anomalies_detected": 23,
+    "anomaly_rate_pct": 5.122494432071269
+  }
+}

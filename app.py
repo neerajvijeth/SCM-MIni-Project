@@ -111,6 +111,27 @@ COLORS = {
     "risk_low": "#27AE60",
 }
 
+GRAPH_CONFIG = {
+    "displaylogo": False,
+    "modeBarButtonsToRemove": ["select2d", "lasso2d", "autoScale2d"],
+    "responsive": True,
+}
+
+
+def make_graph(graph_id: str):
+    return dcc.Graph(id=graph_id, config=GRAPH_CONFIG, className="chart-graph")
+
+
+def graph_col(graph_id: str, md: int):
+    return dbc.Col(
+        dbc.Card(
+            dbc.CardBody(make_graph(graph_id), className="p-2"),
+            className="graph-card h-100",
+        ),
+        md=md,
+        className="mb-3",
+    )
+
 
 # ============================================================
 # KPI Card Component
@@ -190,15 +211,9 @@ def page_executive():
     return html.Div([
         # KPI Cards Row
         html.Div(id="exec-kpi-cards"),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="exec-ontime-bar"), md=6),
-            dbc.Col(dcc.Graph(id="exec-status-pie"), md=6),
-        ]),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="exec-monthly-line"), md=7),
-            dbc.Col(dcc.Graph(id="exec-category-bar"), md=5),
-        ]),
-    ])
+        dbc.Row([graph_col("exec-ontime-bar", 6), graph_col("exec-status-pie", 6)], className="g-2"),
+        dbc.Row([graph_col("exec-monthly-line", 7), graph_col("exec-category-bar", 5)], className="g-2"),
+    ], className="tab-page")
 
 
 # ============================================================
@@ -247,53 +262,54 @@ def page_scorecard():
     return html.Div([
         dbc.Row([
             dbc.Col([
-                dash_table.DataTable(
-                    id="scorecard-table",
-                    columns=table_columns,
-                    data=table_data,
-                    sort_action="native",
-                    filter_action="native",
-                    page_size=10,
-                    row_selectable="single",
-                    style_table={"overflowX": "auto"},
-                    style_header={
-                        "backgroundColor": COLORS["primary"],
-                        "color": "white",
-                        "fontWeight": "bold",
-                        "fontSize": "13px",
-                        "textAlign": "center",
-                    },
-                    style_cell={
-                        "textAlign": "center",
-                        "padding": "8px 12px",
-                        "fontSize": "13px",
-                        "fontFamily": "'Segoe UI', sans-serif",
-                    },
-                    style_data_conditional=[
-                        {"if": {"filter_query": '{risk_label} = "High"',
-                                "column_id": "risk_label"},
-                         "backgroundColor": "#fde8e8", "color": COLORS["risk_high"],
-                         "fontWeight": "bold"},
-                        {"if": {"filter_query": '{risk_label} = "Medium"',
-                                "column_id": "risk_label"},
-                         "backgroundColor": "#fef5e7", "color": COLORS["risk_medium"],
-                         "fontWeight": "bold"},
-                        {"if": {"filter_query": '{risk_label} = "Low"',
-                                "column_id": "risk_label"},
-                         "backgroundColor": "#e8f8f0", "color": COLORS["risk_low"],
-                         "fontWeight": "bold"},
-                    ],
+                dbc.Card(
+                    dbc.CardBody(
+                        dash_table.DataTable(
+                            id="scorecard-table",
+                            columns=table_columns,
+                            data=table_data,
+                            sort_action="native",
+                            filter_action="native",
+                            page_size=10,
+                            row_selectable="single",
+                            style_table={"overflowX": "auto"},
+                            style_header={
+                                "backgroundColor": COLORS["primary"],
+                                "color": "white",
+                                "fontWeight": "bold",
+                                "fontSize": "13px",
+                                "textAlign": "center",
+                            },
+                            style_cell={
+                                "textAlign": "center",
+                                "padding": "10px 12px",
+                                "fontSize": "13px",
+                                "fontFamily": "'Segoe UI', sans-serif",
+                                "border": "1px solid #eef2f7",
+                            },
+                            style_data_conditional=[
+                                {"if": {"filter_query": '{risk_label} = "High"',
+                                        "column_id": "risk_label"},
+                                 "backgroundColor": "#fde8e8", "color": COLORS["risk_high"],
+                                 "fontWeight": "bold"},
+                                {"if": {"filter_query": '{risk_label} = "Medium"',
+                                        "column_id": "risk_label"},
+                                 "backgroundColor": "#fef5e7", "color": COLORS["risk_medium"],
+                                 "fontWeight": "bold"},
+                                {"if": {"filter_query": '{risk_label} = "Low"',
+                                        "column_id": "risk_label"},
+                                 "backgroundColor": "#e8f8f0", "color": COLORS["risk_low"],
+                                 "fontWeight": "bold"},
+                            ],
+                        )
+                    ),
+                    className="graph-card",
                 ),
             ], md=12),
-        ], className="mb-3"),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="scorecard-radar"), md=5),
-            dbc.Col(dcc.Graph(id="scorecard-perf-bar"), md=7),
-        ]),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="scorecard-scatter"), md=12),
-        ]),
-    ])
+        ], className="mb-2"),
+        dbc.Row([graph_col("scorecard-radar", 5), graph_col("scorecard-perf-bar", 7)], className="g-2"),
+        dbc.Row([graph_col("scorecard-scatter", 12)], className="g-2"),
+    ], className="tab-page")
 
 
 # ============================================================
@@ -319,15 +335,9 @@ def page_lead_time():
                 ),
             ], md=12),
         ], className="mb-3"),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="lt-historical-line"), md=6),
-            dbc.Col(dcc.Graph(id="lt-forecast-chart"), md=6),
-        ]),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="lt-variance-bar"), md=6),
-            dbc.Col(dcc.Graph(id="lt-category-box"), md=6),
-        ]),
-    ])
+        dbc.Row([graph_col("lt-historical-line", 6), graph_col("lt-forecast-chart", 6)], className="g-2"),
+        dbc.Row([graph_col("lt-variance-bar", 6), graph_col("lt-category-box", 6)], className="g-2"),
+    ], className="tab-page")
 
 
 # ============================================================
@@ -335,22 +345,21 @@ def page_lead_time():
 # ============================================================
 def page_quality():
     return html.Div([
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="qual-histogram"), md=6),
-            dbc.Col(dcc.Graph(id="qual-scatter"), md=6),
-        ]),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="qual-heatmap"), md=7),
-            dbc.Col(dcc.Graph(id="qual-donut"), md=5),
-        ]),
+        dbc.Row([graph_col("qual-histogram", 6), graph_col("qual-scatter", 6)], className="g-2"),
+        dbc.Row([graph_col("qual-heatmap", 7), graph_col("qual-donut", 5)], className="g-2"),
         dbc.Row([
             dbc.Col([
-                html.H5("🚨 Anomaly Flags", className="mb-2",
-                         style={"color": COLORS["danger"]}),
-                html.Div(id="qual-anomaly-table"),
+                dbc.Card(
+                    dbc.CardBody([
+                        html.H5("🚨 Anomaly Flags", className="mb-2",
+                                style={"color": COLORS["danger"]}),
+                        html.Div(id="qual-anomaly-table"),
+                    ]),
+                    className="graph-card",
+                ),
             ], md=12),
         ]),
-    ])
+    ], className="tab-page")
 
 
 # ============================================================
@@ -358,22 +367,21 @@ def page_quality():
 # ============================================================
 def page_communications():
     return html.Div([
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="comm-response-bar"), md=7),
-            dbc.Col(dcc.Graph(id="comm-sla-gauge"), md=5),
-        ]),
-        dbc.Row([
-            dbc.Col(dcc.Graph(id="comm-channel-pie"), md=4),
-            dbc.Col(dcc.Graph(id="comm-contract-timeline"), md=8),
-        ]),
+        dbc.Row([graph_col("comm-response-bar", 7), graph_col("comm-sla-gauge", 5)], className="g-2"),
+        dbc.Row([graph_col("comm-channel-pie", 4), graph_col("comm-contract-timeline", 8)], className="g-2"),
         dbc.Row([
             dbc.Col([
-                html.H5("📋 Contracts Expiring Within 90 Days", className="mb-2"),
-                html.Div(id="comm-expiring-table"),
-            ], md=7),
-            dbc.Col(dcc.Graph(id="comm-breach-bar"), md=5),
+                dbc.Card(
+                    dbc.CardBody([
+                        html.H5("📋 Contracts Expiring Within 90 Days", className="mb-2"),
+                        html.Div(id="comm-expiring-table"),
+                    ]),
+                    className="graph-card",
+                ),
+            ], md=8),
+            graph_col("comm-breach-bar", 4),
         ]),
-    ])
+    ], className="tab-page")
 
 
 # ============================================================
@@ -395,7 +403,7 @@ app.layout = dbc.Container([
                           style={"color": COLORS["accent"], "fontWeight": "600", "fontSize": "12px"}),
             ], style={"textAlign": "right", "paddingTop": "10px"}),
         ], md=4),
-    ], className="py-3 mb-2",
+    ], className="py-3 mb-3 app-header",
        style={"borderBottom": f"2px solid {COLORS['light']}"}),
 
     # Global Filters
@@ -417,13 +425,13 @@ app.layout = dbc.Container([
             dcc.Tab(label="📨 Communications & Contracts", value="tab-comms",
                     style={"fontWeight": "600"}, selected_style={"fontWeight": "700"}),
         ],
-        className="mb-3",
+        className="mb-3 app-tabs",
     ),
 
     # Tab Content
     html.Div(id="tab-content"),
 
-], fluid=True, style={"backgroundColor": "#f8f9fa", "minHeight": "100vh"})
+], fluid=True, className="app-shell", style={"backgroundColor": "#f5f7fb", "minHeight": "100vh", "paddingBottom": "18px"})
 
 
 # ============================================================
@@ -1274,11 +1282,32 @@ def update_comms(start_date, end_date, category):
     expiring_table = dash_table.DataTable(
         columns=[{"name": c, "id": c} for c in exp_display.columns],
         data=exp_display.to_dict("records"),
+        style_table={"overflowX": "auto", "minWidth": "100%"},
         style_header={
             "backgroundColor": COLORS["primary"],
             "color": "white", "fontWeight": "bold",
+            "textAlign": "center",
+            "fontSize": "13px",
+            "padding": "10px 8px",
         },
-        style_cell={"textAlign": "center", "padding": "6px", "fontSize": "13px"},
+        style_cell={
+            "textAlign": "center",
+            "padding": "9px 8px",
+            "fontSize": "13px",
+            "minWidth": "92px",
+            "width": "92px",
+            "maxWidth": "180px",
+            "whiteSpace": "normal",
+            "height": "auto",
+            "border": "1px solid #eef2f7",
+        },
+        style_cell_conditional=[
+            {"if": {"column_id": "Supplier"}, "minWidth": "160px", "width": "160px"},
+            {"if": {"column_id": "Contract Value (₹)"}, "minWidth": "120px", "width": "120px"},
+            {"if": {"column_id": "SLA Lead Time (days)"}, "minWidth": "135px", "width": "135px"},
+            {"if": {"column_id": "Status"}, "minWidth": "95px", "width": "95px"},
+            {"if": {"column_id": "Days Left"}, "minWidth": "85px", "width": "85px"},
+        ],
         style_data_conditional=[
             {"if": {"filter_query": "{Days Left} <= 30"},
              "backgroundColor": "#fde8e8", "fontWeight": "bold"},
@@ -1303,8 +1332,11 @@ def update_comms(start_date, end_date, category):
     fig_breach.update_layout(
         title="SLA Breach Count — Top 15 Suppliers",
         xaxis_title="Breaches", yaxis_title="",
-        height=400, margin=dict(l=20, r=20, t=40, b=20),
+        height=430,
+        margin=dict(l=6, r=10, t=45, b=28),
         plot_bgcolor="white",
+        yaxis=dict(tickfont=dict(size=11), automargin=True),
+        xaxis=dict(dtick=1, automargin=True),
     )
 
     return fig_resp, fig_gauge, fig_channel, fig_timeline, expiring_table, fig_breach
@@ -1314,4 +1346,4 @@ def update_comms(start_date, end_date, category):
 # Run Server
 # ============================================================
 if __name__ == "__main__":
-    app.run(debug=True, port=8050)
+    app.run(debug=False, port=8050)

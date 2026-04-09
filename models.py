@@ -12,6 +12,7 @@ import os
 import warnings
 import sqlite3
 import pickle
+import json
 
 import numpy as np
 import pandas as pd
@@ -61,8 +62,10 @@ def model1_lead_time_forecasting():
     """)
 
     po_df["order_date"] = pd.to_datetime(po_df["order_date"])
+    po_df["expected_delivery"] = pd.to_datetime(po_df["expected_delivery"])
     po_df["actual_delivery"] = pd.to_datetime(po_df["actual_delivery"])
     po_df["actual_lead_time_days"] = (po_df["actual_delivery"] - po_df["order_date"]).dt.days
+    po_df["expected_lead_time_days"] = (po_df["expected_delivery"] - po_df["order_date"]).dt.days
     po_df["month"] = po_df["order_date"].dt.month
     po_df["quarter"] = po_df["order_date"].dt.quarter
 
@@ -99,7 +102,7 @@ def model1_lead_time_forecasting():
     po_df = pd.concat([po_df, category_dummies], axis=1)
 
     feature_cols = (
-        ["supplier_encoded", "quantity", "unit_price", "month", "quarter",
+        ["supplier_encoded", "quantity", "unit_price", "month", "quarter", "expected_lead_time_days",
          "historical_avg_lead_time", "historical_delay_rate"]
         + [c for c in category_dummies.columns]
     )
@@ -118,7 +121,13 @@ def model1_lead_time_forecasting():
     r2_lr = r2_score(y_test, y_pred_lr)
 
     # --- Main Model: Random Forest Regressor ---
-    rf = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
+    rf = RandomForestRegressor(
+        n_estimators=300,
+        max_depth=12,
+        min_samples_leaf=2,
+        random_state=42,
+        n_jobs=-1,
+    )
     rf.fit(X_train, y_train)
     y_pred_rf = rf.predict(X_test)
     rmse_rf = np.sqrt(mean_squared_error(y_test, y_pred_rf))
@@ -135,7 +144,7 @@ def model1_lead_time_forecasting():
     # Feature importance
     importances = rf.feature_importances_
     feature_names = (
-        ["Supplier", "Quantity", "Unit Price", "Month", "Quarter",
+        ["Supplier", "Quantity", "Unit Price", "Month", "Quarter", "Expected Lead Time",
          "Hist Avg Lead Time", "Hist Delay Rate"]
         + [c.replace("cat_", "") for c in category_dummies.columns]
     )
@@ -215,7 +224,15 @@ def model1_lead_time_forecasting():
     pred_df.to_csv(os.path.join(BASE_DIR, "lead_time_predictions.csv"), index=False)
     print(f"\nSaved: model1_rf.pkl, model1_arima_results.pkl, lead_time_predictions.csv ({len(pred_df)} rows)")
 
-    return rf, arima_results
+    metrics = {
+        "rmse_lr": float(rmse_lr),
+        "r2_lr": float(r2_lr),
+        "rmse_rf": float(rmse_rf),
+        "mae_rf": float(mae_rf),
+        "r2_rf": float(r2_rf),
+        "num_training_rows": int(len(po_df)),
+    }
+    return rf, arima_results, metrics
 
 
 # ============================================================
@@ -381,7 +398,8 @@ def model2_risk_scoring():
 
     acc = accuracy_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred, average="weighted")
-    cm = confusion_matrix(y_test, y_pred)
+    label_ids = np.arange(len(le_risk.classes_))
+    cm = confusion_matrix(y_test, y_pred, labels=label_ids)
 
     print(f"\n--- Classification Results ---")
     print(f"Accuracy: {acc:.2%}")
@@ -391,7 +409,7 @@ def model2_risk_scoring():
     cm_df = pd.DataFrame(cm, index=labels, columns=labels)
     print(cm_df.to_string())
     print(f"\nClassification Report:")
-    print(classification_report(y_test, y_pred, target_names=labels))
+    print(classification_report(y_test, y_pred, labels=label_ids, target_names=labels, zero_division=0))
 
     # Predict on all suppliers
     y_pred_all = clf.predict(X)
@@ -411,7 +429,12 @@ def model2_risk_scoring():
     )
     print(f"\nSaved: model2_risk_classifier.pkl, supplier_risk_scores.csv ({len(features)} rows)")
 
-    return clf, features
+    metrics = {
+        "accuracy": float(acc),
+        "weighted_f1": float(f1),
+        "num_suppliers_scored": int(len(features)),
+    }
+    return clf, features, metrics
 
 
 # ============================================================
@@ -515,7 +538,12 @@ def model3_anomaly_detection():
     df[output_cols].to_csv(os.path.join(BASE_DIR, "anomaly_flags.csv"), index=False)
     print(f"Saved: model3_isoforest.pkl, anomaly_flags.csv ({len(df)} rows)")
 
-    return iso, df
+    metrics = {
+        "total_receipts_analyzed": int(total),
+        "anomalies_detected": int(anomaly_count),
+        "anomaly_rate_pct": float((anomaly_count / total) * 100),
+    }
+    return iso, df, metrics
 
 
 # ============================================================
@@ -532,13 +560,22 @@ def main():
         return
 
     # Model 1
-    rf_model, arima_results = model1_lead_time_forecasting()
+    rf_model, arima_results, model1_metrics = model1_lead_time_forecasting()
 
     # Model 2
-    risk_clf, risk_features = model2_risk_scoring()
+    risk_clf, risk_features, model2_metrics = model2_risk_scoring()
 
     # Model 3
-    iso_model, anomaly_df = model3_anomaly_detection()
+    iso_model, anomaly_df, model3_metrics = model3_anomaly_detection()
+
+    metrics_payload = {
+        "model1_lead_time_forecasting": model1_metrics,
+        "model2_supplier_risk_classification": model2_metrics,
+        "model3_anomaly_detection": model3_metrics,
+    }
+    metrics_path = os.path.join(BASE_DIR, "model_metrics.json")
+    with open(metrics_path, "w", encoding="utf-8") as f:
+        json.dump(metrics_payload, f, indent=2)
 
     print("\n" + "=" * 60)
     print("All models trained and saved successfully!")
@@ -548,10 +585,10 @@ def main():
         "model1_rf.pkl", "model1_arima_results.pkl", "lead_time_predictions.csv",
         "feature_importance.png", "model2_risk_classifier.pkl",
         "supplier_risk_scores.csv", "model3_isoforest.pkl",
-        "anomaly_flags.csv", "anomaly_scatter.png",
+        "anomaly_flags.csv", "anomaly_scatter.png", "model_metrics.json",
     ]:
         path = os.path.join(BASE_DIR, f)
-        exists = "✓" if os.path.exists(path) else "✗"
+        exists = "[OK]" if os.path.exists(path) else "[MISSING]"
         print(f"  {exists} {f}")
 
 

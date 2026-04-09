@@ -81,3 +81,34 @@ To stop the server at any time, go to your terminal and press `Control + C`.
 * `schema.sql`: Raw SQL definition of the database.
 * `report.md` & `presentation_outline.md`: Academic deliverables and documentation.
 * `requirements.txt`: Python package dependencies.
+
+---
+
+## React + FastAPI (Simple UI)
+
+This repository now also includes a minimal full-stack version:
+- `backend/main.py` (FastAPI)
+- `frontend/` (React + Vite)
+
+### 1) Start Backend
+```bash
+pip install -r requirements.txt
+uvicorn backend.main:app --reload --port 8000
+```
+
+### 2) Start Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open: `http://127.0.0.1:5173`
+
+### Available API Endpoints
+- `GET /api/health`
+- `GET /api/summary`
+- `GET /api/risk-suppliers?limit=10`
+- `GET /api/anomalies?limit=15`
+- `GET /api/leadtime-forecast`
+- `GET /api/model-metrics`

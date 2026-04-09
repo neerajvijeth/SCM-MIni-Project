@@ -1,453 +1,450 @@
 inspection_id,receipt_id,inspection_date,inspector_name,defect_rate_pct,defect_type,inspection_result,remarks
-QI000001,GR000001,2023-01-11,R. Sharma,4.91,Functional,Pass,
-QI000002,GR000002,2023-02-01,S. Tanaka,2.92,Other,Pass,
-QI000003,GR000003,2023-01-21,M. Weber,6.37,Other,Conditional,Accepted for non-critical applications only.
-QI000004,GR000004,2023-01-23,S. Tanaka,2.07,Surface,Pass,
-QI000005,GR000005,2023-01-28,T. Yamamoto,4.95,Other,Pass,
-QI000006,GR000006,2023-01-14,T. Yamamoto,3.68,Other,Pass,
-QI000007,GR000007,2023-01-28,K. Nguyen,6.65,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000008,GR000008,2023-02-03,K. Nguyen,20.78,Dimensional,Fail,Quality below acceptable standards. Return to supplier.
-QI000009,GR000009,2023-02-07,K. Nguyen,7.12,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000010,GR000010,2023-02-22,J. Smith,4.08,Missing,Pass,
-QI000011,GR000011,2023-02-17,L. Chen,6.32,Other,Conditional,Partial rework needed before use.
-QI000012,GR000012,2023-02-24,J. Smith,5.94,Functional,Conditional,Accepted for non-critical applications only.
-QI000013,GR000013,2023-02-25,S. Tanaka,7.18,Surface,Conditional,Accepted for non-critical applications only.
-QI000014,GR000014,2023-03-03,S. Tanaka,6.88,Missing,Conditional,Partial rework needed before use.
-QI000015,GR000015,2023-03-09,K. Nguyen,4.91,Functional,Pass,
-QI000016,GR000016,2023-03-15,J. Smith,0.79,,Pass,
-QI000017,GR000017,2023-03-10,L. Chen,2.5,Surface,Pass,
-QI000018,GR000018,2023-03-16,J. Smith,7.53,Surface,Conditional,Partial rework needed before use.
-QI000019,GR000019,2023-03-12,J. Smith,1.04,,Pass,
-QI000020,GR000020,2023-03-16,R. Sharma,3.58,Other,Pass,
-QI000021,GR000021,2023-03-20,P. Kumar,1.23,,Pass,
-QI000022,GR000022,2023-03-17,R. Sharma,7.97,Functional,Conditional,Partial rework needed before use.
-QI000023,GR000023,2023-03-19,P. Kumar,6.76,Missing,Conditional,Accepted for non-critical applications only.
-QI000024,GR000024,2023-03-27,A. Patel,4.31,Other,Pass,
-QI000025,GR000025,2023-03-26,K. Nguyen,18.35,Surface,Fail,Quality below acceptable standards. Return to supplier.
-QI000026,GR000026,2023-04-18,R. Sharma,28.01,Dimensional,Fail,Non-conformance report raised. Supplier notified.
-QI000027,GR000027,2023-04-19,T. Yamamoto,7.01,Surface,Conditional,Accepted for non-critical applications only.
-QI000028,GR000028,2023-04-16,K. Nguyen,3.33,Functional,Pass,
-QI000029,GR000029,2023-04-20,D. Müller,1.22,,Pass,
-QI000030,GR000030,2023-04-07,M. Weber,5.65,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000031,GR000031,2023-04-17,A. Patel,4.51,Functional,Pass,
-QI000032,GR000032,2023-04-21,M. Weber,1.31,,Pass,
-QI000033,GR000033,2023-04-18,S. Tanaka,3.86,Dimensional,Pass,
-QI000034,GR000034,2023-05-08,T. Yamamoto,3.45,Missing,Pass,
-QI000035,GR000035,2023-04-26,A. Patel,1.6,,Pass,
-QI000036,GR000036,2023-04-25,A. Patel,9.52,Surface,Conditional,Accepted for non-critical applications only.
-QI000037,GR000037,2023-05-04,M. Weber,25.09,Surface,Fail,Batch rejected due to high defect rate.
-QI000038,GR000038,2023-05-07,M. Weber,0.97,,Pass,
-QI000039,GR000039,2023-04-27,R. Sharma,5.77,Surface,Conditional,Partial rework needed before use.
-QI000040,GR000040,2023-05-12,T. Yamamoto,3.01,Surface,Pass,
-QI000041,GR000041,2023-05-05,M. Weber,2.58,Functional,Pass,
-QI000042,GR000042,2023-05-07,S. Tanaka,3.06,Missing,Pass,
-QI000043,GR000043,2023-05-25,D. Müller,3.49,Functional,Pass,
-QI000044,GR000044,2023-05-09,L. Chen,5.42,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000045,GR000045,2023-06-09,J. Smith,4.98,Missing,Pass,
-QI000046,GR000046,2023-05-22,D. Müller,5.77,Surface,Conditional,Partial rework needed before use.
-QI000047,GR000047,2023-05-29,S. Tanaka,26.92,Dimensional,Fail,Quality below acceptable standards. Return to supplier.
-QI000048,GR000048,2023-05-21,K. Nguyen,2.83,Other,Pass,
-QI000049,GR000049,2023-05-25,T. Yamamoto,4.27,Functional,Pass,
-QI000050,GR000050,2023-06-27,J. Smith,25.06,Functional,Fail,Batch rejected due to high defect rate.
-QI000051,GR000051,2023-06-05,P. Kumar,1.06,,Pass,
-QI000052,GR000052,2023-06-09,K. Nguyen,1.33,,Pass,
-QI000053,GR000053,2023-06-01,K. Nguyen,3.14,Other,Pass,
-QI000054,GR000054,2023-06-11,T. Yamamoto,4.07,Missing,Pass,
-QI000055,GR000055,2023-06-13,S. Tanaka,23.22,Missing,Fail,Quality below acceptable standards. Return to supplier.
-QI000056,GR000056,2023-06-11,R. Sharma,5.21,Missing,Conditional,Partial rework needed before use.
-QI000057,GR000057,2023-06-12,L. Chen,7.14,Dimensional,Conditional,Partial rework needed before use.
-QI000058,GR000058,2023-06-10,K. Nguyen,7.68,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000059,GR000059,2023-06-14,T. Yamamoto,7.46,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000060,GR000060,2023-06-27,R. Sharma,1.91,,Pass,
-QI000061,GR000061,2023-06-26,P. Kumar,3.16,Functional,Pass,
-QI000062,GR000062,2023-06-28,M. Weber,4.22,Surface,Pass,
-QI000063,GR000063,2023-06-17,M. Weber,3.11,Surface,Pass,
-QI000064,GR000064,2023-06-21,K. Nguyen,4.06,Surface,Pass,
-QI000065,GR000065,2023-07-03,K. Nguyen,6.92,Dimensional,Conditional,Partial rework needed before use.
-QI000066,GR000066,2023-07-03,L. Chen,9.51,Other,Conditional,Accepted for non-critical applications only.
-QI000067,GR000067,2023-07-04,M. Weber,10.21,Missing,Fail,Non-conformance report raised. Supplier notified.
-QI000068,GR000068,2023-07-14,J. Smith,1.67,,Pass,
-QI000069,GR000069,2023-07-22,S. Tanaka,0.35,,Pass,
-QI000070,GR000070,2023-07-13,D. Müller,6.11,Other,Conditional,Partial rework needed before use.
-QI000071,GR000071,2023-07-16,R. Sharma,4.42,Other,Pass,
-QI000072,GR000072,2023-07-29,J. Smith,5.26,Functional,Conditional,Partial rework needed before use.
-QI000073,GR000073,2023-07-21,L. Chen,1.01,,Pass,
-QI000074,GR000074,2023-08-06,R. Sharma,5.52,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000075,GR000075,2023-08-07,L. Chen,0.93,,Pass,
-QI000076,GR000076,2023-08-18,L. Chen,3.98,Functional,Pass,
-QI000077,GR000077,2023-08-02,L. Chen,9.93,Dimensional,Conditional,Partial rework needed before use.
-QI000078,GR000078,2023-08-05,P. Kumar,3.79,Dimensional,Pass,
-QI000079,GR000079,2023-08-04,L. Chen,3.42,Dimensional,Pass,
-QI000080,GR000080,2023-08-18,K. Nguyen,1.09,,Pass,
-QI000081,GR000081,2023-08-10,L. Chen,22.61,Dimensional,Fail,Non-conformance report raised. Supplier notified.
-QI000082,GR000082,2023-09-03,T. Yamamoto,18.65,Functional,Fail,Batch rejected due to high defect rate.
-QI000083,GR000083,2023-08-12,J. Smith,7.36,Functional,Conditional,Partial rework needed before use.
-QI000084,GR000084,2023-08-11,D. Müller,7.8,Surface,Conditional,Partial rework needed before use.
-QI000085,GR000085,2023-08-17,J. Smith,7.09,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000086,GR000086,2023-08-21,T. Yamamoto,5.95,Surface,Conditional,Accepted for non-critical applications only.
-QI000087,GR000087,2023-09-02,S. Tanaka,4.18,Missing,Pass,
-QI000088,GR000088,2023-08-26,T. Yamamoto,7.08,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000089,GR000089,2023-08-23,R. Sharma,2.77,Functional,Pass,
-QI000090,GR000090,2023-08-25,R. Sharma,2.25,Missing,Pass,
-QI000091,GR000091,2023-08-18,A. Patel,3.08,Other,Pass,
-QI000092,GR000092,2023-08-24,L. Chen,1.26,,Pass,
-QI000093,GR000093,2023-08-26,K. Nguyen,1.59,,Pass,
-QI000094,GR000094,2023-08-26,P. Kumar,5.43,Functional,Conditional,Partial rework needed before use.
-QI000095,GR000095,2023-08-30,T. Yamamoto,2.71,Other,Pass,
-QI000096,GR000096,2023-09-03,R. Sharma,9.26,Functional,Conditional,Partial rework needed before use.
-QI000097,GR000097,2023-09-01,D. Müller,7.84,Dimensional,Conditional,Partial rework needed before use.
-QI000098,GR000098,2023-09-02,S. Tanaka,1.55,,Pass,
-QI000099,GR000099,2023-09-30,S. Tanaka,1.16,,Pass,
-QI000100,GR000100,2023-09-21,M. Weber,6.2,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000101,GR000101,2023-09-25,D. Müller,1.99,,Pass,
-QI000102,GR000102,2023-09-19,T. Yamamoto,6.56,Dimensional,Conditional,Partial rework needed before use.
-QI000103,GR000103,2023-09-18,K. Nguyen,6.33,Functional,Conditional,Accepted for non-critical applications only.
-QI000104,GR000104,2023-10-06,S. Tanaka,5.7,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000105,GR000105,2023-09-17,K. Nguyen,3.85,Missing,Pass,
-QI000106,GR000106,2023-09-26,A. Patel,4.24,Functional,Pass,
-QI000107,GR000107,2023-09-23,M. Weber,1.13,,Pass,
-QI000108,GR000108,2023-10-01,P. Kumar,3.01,Other,Pass,
-QI000109,GR000109,2023-10-01,P. Kumar,5.44,Other,Conditional,Partial rework needed before use.
-QI000110,GR000110,2023-10-01,J. Smith,1.09,,Pass,
-QI000111,GR000111,2023-10-11,M. Weber,4.11,Missing,Pass,
-QI000112,GR000112,2023-10-11,L. Chen,2.19,Functional,Pass,
-QI000113,GR000113,2023-10-20,J. Smith,6.97,Missing,Conditional,Accepted for non-critical applications only.
-QI000114,GR000114,2023-10-22,S. Tanaka,6.24,Functional,Conditional,Partial rework needed before use.
-QI000115,GR000115,2023-10-30,K. Nguyen,4.16,Dimensional,Pass,
-QI000116,GR000116,2023-11-17,L. Chen,2.17,Other,Pass,
-QI000117,GR000117,2023-11-02,P. Kumar,6.35,Other,Conditional,Accepted for non-critical applications only.
-QI000118,GR000118,2023-11-09,L. Chen,3.63,Surface,Pass,
-QI000119,GR000119,2023-11-11,M. Weber,6.95,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000120,GR000120,2023-11-16,K. Nguyen,9.85,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000121,GR000121,2023-11-09,J. Smith,7.89,Other,Conditional,Partial rework needed before use.
-QI000122,GR000122,2023-11-20,S. Tanaka,0.89,,Pass,
-QI000123,GR000123,2023-11-18,M. Weber,22.36,Functional,Fail,Non-conformance report raised. Supplier notified.
-QI000124,GR000124,2023-11-15,P. Kumar,4.46,Functional,Pass,
-QI000125,GR000125,2023-11-15,D. Müller,7.11,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000126,GR000126,2023-11-30,A. Patel,6.34,Surface,Conditional,Accepted for non-critical applications only.
-QI000127,GR000127,2023-11-21,R. Sharma,5.57,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000128,GR000128,2023-12-10,D. Müller,1.97,,Pass,
-QI000129,GR000129,2023-11-30,L. Chen,1.24,,Pass,
-QI000130,GR000130,2023-11-26,T. Yamamoto,3.28,Surface,Pass,
-QI000131,GR000131,2023-12-20,D. Müller,26.21,Dimensional,Fail,Non-conformance report raised. Supplier notified.
-QI000132,GR000132,2023-12-03,J. Smith,8.65,Surface,Conditional,Partial rework needed before use.
-QI000133,GR000133,2023-11-26,J. Smith,2.68,Surface,Pass,
-QI000134,GR000134,2023-12-09,M. Weber,1.45,,Pass,
-QI000135,GR000135,2023-12-13,P. Kumar,4.21,Other,Pass,
-QI000136,GR000136,2024-01-07,A. Patel,6.58,Other,Conditional,Accepted for non-critical applications only.
-QI000137,GR000137,2024-01-03,M. Weber,1.69,,Pass,
-QI000138,GR000138,2024-01-04,R. Sharma,1.93,,Pass,
-QI000139,GR000139,2024-01-17,L. Chen,3.84,Missing,Pass,
-QI000140,GR000140,2024-01-20,T. Yamamoto,23.01,Other,Fail,Batch rejected due to high defect rate.
-QI000141,GR000141,2024-01-05,P. Kumar,4.74,Missing,Pass,
-QI000142,GR000142,2024-01-06,R. Sharma,1.42,,Pass,
-QI000143,GR000143,2024-01-22,A. Patel,6.02,Missing,Conditional,Partial rework needed before use.
-QI000144,GR000144,2024-02-04,K. Nguyen,6.93,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000145,GR000145,2024-01-26,M. Weber,5.6,Surface,Conditional,Partial rework needed before use.
-QI000146,GR000146,2024-02-01,P. Kumar,3.31,Dimensional,Pass,
-QI000147,GR000147,2024-01-26,J. Smith,4.44,Functional,Pass,
-QI000148,GR000148,2024-02-03,T. Yamamoto,4.11,Functional,Pass,
-QI000149,GR000149,2024-02-08,K. Nguyen,1.25,,Pass,
-QI000150,GR000150,2024-02-22,T. Yamamoto,1.18,,Pass,
-QI000151,GR000151,2024-02-17,T. Yamamoto,3.04,Surface,Pass,
-QI000152,GR000152,2024-03-10,K. Nguyen,4.33,Functional,Pass,
-QI000153,GR000153,2024-02-20,L. Chen,26.34,Other,Fail,Critical defects found. Full batch inspection required.
-QI000154,GR000154,2024-02-23,S. Tanaka,2.6,Other,Pass,
-QI000155,GR000155,2024-02-24,D. Müller,1.08,,Pass,
-QI000156,GR000156,2024-03-11,J. Smith,29.95,Missing,Fail,Quality below acceptable standards. Return to supplier.
-QI000157,GR000157,2024-03-18,D. Müller,7.97,Other,Conditional,Partial rework needed before use.
-QI000158,GR000158,2024-03-24,P. Kumar,7.06,Surface,Conditional,Accepted for non-critical applications only.
-QI000159,GR000159,2024-03-23,M. Weber,7.28,Dimensional,Conditional,Partial rework needed before use.
-QI000160,GR000160,2024-03-17,A. Patel,2.57,Other,Pass,
-QI000161,GR000161,2024-03-25,R. Sharma,3.5,Other,Pass,
-QI000162,GR000162,2024-03-27,M. Weber,6.92,Surface,Conditional,Accepted for non-critical applications only.
-QI000163,GR000163,2024-03-30,A. Patel,1.23,,Pass,
-QI000164,GR000164,2024-04-12,D. Müller,4.55,Other,Pass,
-QI000165,GR000165,2024-04-21,P. Kumar,4.76,Dimensional,Pass,
-QI000166,GR000166,2024-04-08,M. Weber,2.74,Surface,Pass,
-QI000167,GR000167,2024-04-12,S. Tanaka,6.02,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000168,GR000168,2024-04-20,A. Patel,1.64,,Pass,
-QI000169,GR000169,2024-04-26,R. Sharma,1.93,,Pass,
-QI000170,GR000170,2024-04-28,P. Kumar,6.86,Other,Conditional,Accepted for non-critical applications only.
-QI000171,GR000171,2024-05-09,M. Weber,24.44,Functional,Fail,Batch rejected due to high defect rate.
-QI000172,GR000172,2024-05-10,A. Patel,4.09,Surface,Pass,
-QI000173,GR000173,2024-04-29,T. Yamamoto,20.58,Functional,Fail,Batch rejected due to high defect rate.
-QI000174,GR000174,2024-05-02,M. Weber,7.33,Missing,Conditional,Accepted for non-critical applications only.
-QI000175,GR000175,2024-05-05,L. Chen,5.44,Dimensional,Conditional,Partial rework needed before use.
-QI000176,GR000176,2024-05-02,D. Müller,4.45,Functional,Pass,
-QI000177,GR000177,2024-05-05,S. Tanaka,2.99,Functional,Pass,
-QI000178,GR000178,2024-05-10,D. Müller,0.57,,Pass,
-QI000179,GR000179,2024-05-25,R. Sharma,25.51,Surface,Fail,Non-conformance report raised. Supplier notified.
-QI000180,GR000180,2024-05-20,K. Nguyen,7.82,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000181,GR000181,2024-05-17,P. Kumar,4.02,Dimensional,Pass,
-QI000182,GR000182,2024-05-30,M. Weber,5.81,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000183,GR000183,2024-05-24,P. Kumar,4.51,Other,Pass,
-QI000184,GR000184,2024-05-20,T. Yamamoto,3.1,Surface,Pass,
-QI000185,GR000185,2024-05-18,K. Nguyen,3.27,Missing,Pass,
-QI000186,GR000186,2024-05-21,J. Smith,1.26,,Pass,
-QI000187,GR000187,2024-05-17,S. Tanaka,7.87,Other,Conditional,Partial rework needed before use.
-QI000188,GR000188,2024-05-25,K. Nguyen,2.84,Functional,Pass,
-QI000189,GR000189,2024-05-21,S. Tanaka,6.09,Functional,Conditional,Partial rework needed before use.
-QI000190,GR000190,2024-06-01,R. Sharma,0.85,,Pass,
-QI000191,GR000191,2024-06-16,P. Kumar,22.85,Functional,Fail,Quality below acceptable standards. Return to supplier.
-QI000192,GR000192,2024-06-04,M. Weber,1.14,,Pass,
-QI000193,GR000193,2024-05-29,J. Smith,6.02,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000194,GR000194,2024-06-09,M. Weber,3.68,Other,Pass,
-QI000195,GR000195,2024-06-18,A. Patel,5.32,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000196,GR000196,2024-06-02,P. Kumar,3.28,Other,Pass,
-QI000197,GR000197,2024-06-17,P. Kumar,7.63,Missing,Conditional,Accepted for non-critical applications only.
-QI000198,GR000198,2024-06-22,A. Patel,7.91,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000199,GR000199,2024-06-22,P. Kumar,3.4,Functional,Pass,
-QI000200,GR000200,2024-06-17,A. Patel,1.78,,Pass,
-QI000201,GR000201,2024-06-25,T. Yamamoto,6.43,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000202,GR000202,2024-06-30,M. Weber,2.4,Missing,Pass,
-QI000203,GR000203,2024-06-28,D. Müller,4.83,Functional,Pass,
-QI000204,GR000204,2024-06-27,A. Patel,3.04,Surface,Pass,
-QI000205,GR000205,2024-07-10,P. Kumar,5.89,Functional,Conditional,Partial rework needed before use.
-QI000206,GR000206,2024-07-09,M. Weber,2.5,Missing,Pass,
-QI000207,GR000207,2024-07-05,S. Tanaka,3.33,Functional,Pass,
-QI000208,GR000208,2024-07-06,L. Chen,7.53,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000209,GR000209,2024-07-24,D. Müller,6.64,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000210,GR000210,2024-07-21,J. Smith,4.96,Other,Pass,
-QI000211,GR000211,2024-07-24,A. Patel,4.44,Functional,Pass,
-QI000212,GR000212,2024-07-25,D. Müller,4.96,Dimensional,Pass,
-QI000213,GR000213,2024-07-24,T. Yamamoto,1.08,,Pass,
-QI000214,GR000214,2024-08-03,L. Chen,5.27,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000215,GR000215,2024-07-23,J. Smith,4.26,Surface,Pass,
-QI000216,GR000216,2024-08-07,R. Sharma,25.77,Missing,Fail,Non-conformance report raised. Supplier notified.
-QI000217,GR000217,2024-07-29,R. Sharma,3.06,Missing,Pass,
-QI000218,GR000218,2024-08-08,M. Weber,3.26,Functional,Pass,
-QI000219,GR000219,2024-07-25,M. Weber,6.37,Missing,Conditional,Accepted for non-critical applications only.
-QI000220,GR000220,2024-07-24,M. Weber,5.02,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000221,GR000221,2024-08-14,R. Sharma,2.44,Dimensional,Pass,
-QI000222,GR000222,2024-08-12,J. Smith,7.61,Surface,Conditional,Accepted for non-critical applications only.
-QI000223,GR000223,2024-08-12,M. Weber,0.72,,Pass,
-QI000224,GR000224,2024-08-09,S. Tanaka,2.41,Missing,Pass,
-QI000225,GR000225,2024-08-06,R. Sharma,1.85,,Pass,
-QI000226,GR000226,2024-08-04,R. Sharma,7.29,Dimensional,Conditional,Partial rework needed before use.
-QI000227,GR000227,2024-07-30,R. Sharma,6.21,Surface,Conditional,Partial rework needed before use.
-QI000228,GR000228,2024-08-15,T. Yamamoto,3.79,Missing,Pass,
-QI000229,GR000229,2024-08-08,D. Müller,1.65,,Pass,
-QI000230,GR000230,2024-08-28,A. Patel,26.69,Surface,Fail,Quality below acceptable standards. Return to supplier.
-QI000231,GR000231,2024-08-17,M. Weber,6.18,Functional,Conditional,Partial rework needed before use.
-QI000232,GR000232,2024-08-07,J. Smith,1.64,,Pass,
-QI000233,GR000233,2024-08-22,R. Sharma,4.56,Dimensional,Pass,
-QI000234,GR000234,2024-08-18,J. Smith,3.94,Functional,Pass,
-QI000235,GR000235,2024-09-04,A. Patel,28.04,Functional,Fail,Quality below acceptable standards. Return to supplier.
-QI000236,GR000236,2024-08-30,J. Smith,27.72,Dimensional,Fail,Critical defects found. Full batch inspection required.
-QI000237,GR000237,2024-08-13,K. Nguyen,6.93,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000238,GR000238,2024-08-28,R. Sharma,1.98,,Pass,
-QI000239,GR000239,2024-09-12,T. Yamamoto,6.62,Functional,Conditional,Partial rework needed before use.
-QI000240,GR000240,2024-09-06,K. Nguyen,6.33,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000241,GR000241,2024-09-23,A. Patel,7.76,Surface,Conditional,Partial rework needed before use.
-QI000242,GR000242,2024-09-06,S. Tanaka,1.21,,Pass,
-QI000243,GR000243,2024-09-08,J. Smith,3.61,Other,Pass,
-QI000244,GR000244,2024-09-11,P. Kumar,1.18,,Pass,
-QI000245,GR000245,2024-10-01,L. Chen,7.1,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000246,GR000246,2024-09-21,R. Sharma,6.06,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000247,GR000247,2024-09-20,A. Patel,2.56,Dimensional,Pass,
-QI000248,GR000248,2024-10-02,P. Kumar,4.25,Other,Pass,
-QI000249,GR000249,2024-09-18,P. Kumar,5.22,Dimensional,Conditional,Partial rework needed before use.
-QI000250,GR000250,2024-09-22,D. Müller,7.32,Functional,Conditional,Accepted for non-critical applications only.
-QI000251,GR000251,2024-10-10,P. Kumar,25.36,Dimensional,Fail,Non-conformance report raised. Supplier notified.
-QI000252,GR000252,2024-09-28,K. Nguyen,1.72,,Pass,
-QI000253,GR000253,2024-10-06,M. Weber,1.91,,Pass,
-QI000254,GR000254,2024-09-22,T. Yamamoto,6.2,Missing,Conditional,Partial rework needed before use.
-QI000255,GR000255,2024-09-24,J. Smith,2.58,Functional,Pass,
-QI000256,GR000256,2024-10-08,D. Müller,4.24,Other,Pass,
-QI000257,GR000257,2024-10-07,J. Smith,7.19,Functional,Conditional,Partial rework needed before use.
-QI000258,GR000258,2024-10-10,R. Sharma,5.06,Missing,Conditional,Accepted for non-critical applications only.
-QI000259,GR000259,2024-11-03,R. Sharma,7.86,Surface,Conditional,Accepted for non-critical applications only.
-QI000260,GR000260,2024-10-13,R. Sharma,2.66,Functional,Pass,
-QI000261,GR000261,2024-10-18,T. Yamamoto,4.39,Surface,Pass,
-QI000262,GR000262,2024-10-09,D. Müller,7.95,Other,Conditional,Partial rework needed before use.
-QI000263,GR000263,2024-10-12,J. Smith,6.21,Other,Conditional,Partial rework needed before use.
-QI000264,GR000264,2024-10-19,D. Müller,2.3,Missing,Pass,
-QI000265,GR000265,2024-11-09,A. Patel,19.16,Other,Fail,Critical defects found. Full batch inspection required.
-QI000266,GR000266,2024-11-04,K. Nguyen,3.99,Other,Pass,
-QI000267,GR000267,2024-11-06,S. Tanaka,7.83,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000268,GR000268,2024-11-05,L. Chen,0.76,,Pass,
-QI000269,GR000269,2024-11-05,D. Müller,7.58,Surface,Conditional,Partial rework needed before use.
-QI000270,GR000270,2024-11-19,J. Smith,6.88,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000271,GR000271,2024-11-13,R. Sharma,6.46,Other,Conditional,Accepted for non-critical applications only.
-QI000272,GR000272,2024-12-07,J. Smith,22.35,Other,Fail,Quality below acceptable standards. Return to supplier.
-QI000273,GR000273,2024-11-30,K. Nguyen,5.76,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000274,GR000274,2024-12-31,R. Sharma,29.46,Surface,Fail,Critical defects found. Full batch inspection required.
-QI000275,GR000275,2024-12-15,L. Chen,7.64,Missing,Conditional,Accepted for non-critical applications only.
-QI000276,GR000276,2024-12-20,R. Sharma,4.28,Functional,Pass,
-QI000277,GR000277,2024-12-17,T. Yamamoto,5.96,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000278,GR000278,2024-12-21,K. Nguyen,5.74,Dimensional,Conditional,Partial rework needed before use.
-QI000279,GR000279,2024-12-26,L. Chen,6.76,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000280,GR000280,2025-01-03,M. Weber,2.35,Dimensional,Pass,
-QI000281,GR000281,2024-12-28,T. Yamamoto,2.93,Dimensional,Pass,
-QI000282,GR000282,2025-01-02,S. Tanaka,2.06,Surface,Pass,
-QI000283,GR000283,2025-01-03,D. Müller,1.08,,Pass,
-QI000284,GR000284,2025-01-06,T. Yamamoto,1.72,,Pass,
-QI000285,GR000285,2025-01-04,T. Yamamoto,5.62,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000286,GR000286,2024-12-29,J. Smith,1.49,,Pass,
-QI000287,GR000287,2025-01-16,A. Patel,7.65,Missing,Conditional,Partial rework needed before use.
-QI000288,GR000288,2025-01-11,S. Tanaka,3.98,Missing,Pass,
-QI000289,GR000289,2025-01-20,T. Yamamoto,4.77,Dimensional,Pass,
-QI000290,GR000290,2025-01-28,L. Chen,7.06,Missing,Conditional,Accepted for non-critical applications only.
-QI000291,GR000291,2025-02-05,D. Müller,25.66,Functional,Fail,Critical defects found. Full batch inspection required.
-QI000292,GR000292,2025-01-24,R. Sharma,5.67,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000293,GR000293,2025-02-03,M. Weber,6.64,Other,Conditional,Partial rework needed before use.
-QI000294,GR000294,2025-02-02,T. Yamamoto,5.66,Missing,Conditional,Accepted for non-critical applications only.
-QI000295,GR000295,2025-02-11,R. Sharma,3.63,Missing,Pass,
-QI000296,GR000296,2025-02-15,A. Patel,5.13,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000297,GR000297,2025-02-15,L. Chen,27.17,Other,Fail,Non-conformance report raised. Supplier notified.
-QI000298,GR000298,2025-02-04,P. Kumar,1.28,,Pass,
-QI000299,GR000299,2025-02-24,L. Chen,5.01,Dimensional,Conditional,Partial rework needed before use.
-QI000300,GR000300,2025-02-17,K. Nguyen,1.18,,Pass,
-QI000301,GR000301,2025-02-11,R. Sharma,7.62,Functional,Conditional,Partial rework needed before use.
-QI000302,GR000302,2025-02-23,J. Smith,6.95,Functional,Conditional,Accepted for non-critical applications only.
-QI000303,GR000303,2025-02-28,J. Smith,7.76,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000304,GR000304,2025-03-10,D. Müller,7.94,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000305,GR000305,2025-03-04,J. Smith,4.83,Missing,Pass,
-QI000306,GR000306,2025-02-24,J. Smith,2.2,Dimensional,Pass,
-QI000307,GR000307,2025-03-03,S. Tanaka,4.77,Functional,Pass,
-QI000308,GR000308,2025-03-11,T. Yamamoto,6.05,Missing,Conditional,Partial rework needed before use.
-QI000309,GR000309,2025-03-15,S. Tanaka,2.3,Surface,Pass,
-QI000310,GR000310,2025-02-26,J. Smith,4.4,Missing,Pass,
-QI000311,GR000311,2025-03-14,M. Weber,7.72,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000312,GR000312,2025-03-28,D. Müller,7.36,Other,Conditional,Partial rework needed before use.
-QI000313,GR000313,2025-04-12,M. Weber,3.79,Dimensional,Pass,
-QI000314,GR000314,2025-04-12,K. Nguyen,5.98,Missing,Conditional,Partial rework needed before use.
-QI000315,GR000315,2025-04-09,A. Patel,24.39,Surface,Fail,Non-conformance report raised. Supplier notified.
-QI000316,GR000316,2025-04-01,A. Patel,6.15,Other,Conditional,Accepted for non-critical applications only.
-QI000317,GR000317,2025-04-13,D. Müller,2.57,Surface,Pass,
-QI000318,GR000318,2025-04-08,P. Kumar,4.15,Dimensional,Pass,
-QI000319,GR000319,2025-04-17,P. Kumar,5.87,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000320,GR000320,2025-04-23,M. Weber,2.51,Functional,Pass,
-QI000321,GR000321,2025-04-20,D. Müller,7.0,Missing,Conditional,Partial rework needed before use.
-QI000322,GR000322,2025-04-22,D. Müller,4.98,Surface,Pass,
-QI000323,GR000323,2025-05-03,J. Smith,5.39,Functional,Conditional,Accepted for non-critical applications only.
-QI000324,GR000324,2025-05-06,M. Weber,2.84,Functional,Pass,
-QI000325,GR000325,2025-04-25,J. Smith,3.5,Surface,Pass,
-QI000326,GR000326,2025-05-02,K. Nguyen,7.9,Other,Conditional,Accepted for non-critical applications only.
-QI000327,GR000327,2025-05-08,P. Kumar,1.84,,Pass,
-QI000328,GR000328,2025-05-06,M. Weber,1.73,,Pass,
-QI000329,GR000329,2025-05-26,P. Kumar,6.02,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000330,GR000330,2025-05-13,P. Kumar,6.86,Other,Conditional,Partial rework needed before use.
-QI000331,GR000331,2025-05-29,R. Sharma,1.45,,Pass,
-QI000332,GR000332,2025-05-23,J. Smith,1.16,,Pass,
-QI000333,GR000333,2025-05-23,S. Tanaka,5.94,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000334,GR000334,2025-05-22,T. Yamamoto,4.51,Dimensional,Pass,
-QI000335,GR000335,2025-05-27,P. Kumar,5.93,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000336,GR000336,2025-05-21,T. Yamamoto,5.88,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000337,GR000337,2025-05-24,D. Müller,4.56,Surface,Pass,
-QI000338,GR000338,2025-05-17,J. Smith,5.11,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000339,GR000339,2025-06-01,D. Müller,6.42,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000340,GR000340,2025-05-22,T. Yamamoto,2.13,Surface,Pass,
-QI000341,GR000341,2025-05-29,P. Kumar,7.93,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000342,GR000342,2025-06-06,L. Chen,0.73,,Pass,
-QI000343,GR000343,2025-06-10,L. Chen,1.9,,Pass,
-QI000344,GR000344,2025-06-25,S. Tanaka,23.69,Surface,Fail,Batch rejected due to high defect rate.
-QI000345,GR000345,2025-06-05,K. Nguyen,5.95,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000346,GR000346,2025-06-11,A. Patel,0.48,,Pass,
-QI000347,GR000347,2025-06-17,T. Yamamoto,6.26,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000348,GR000348,2025-06-20,A. Patel,4.9,Functional,Pass,
-QI000349,GR000349,2025-06-25,J. Smith,7.75,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000350,GR000350,2025-06-23,T. Yamamoto,1.19,,Pass,
-QI000351,GR000351,2025-06-26,M. Weber,3.88,Surface,Pass,
-QI000352,GR000352,2025-08-04,A. Patel,23.98,Surface,Fail,Critical defects found. Full batch inspection required.
-QI000353,GR000353,2025-07-18,K. Nguyen,7.39,Functional,Conditional,Accepted for non-critical applications only.
-QI000354,GR000354,2025-07-02,P. Kumar,5.94,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000355,GR000355,2025-07-11,A. Patel,1.27,,Pass,
-QI000356,GR000356,2025-06-27,J. Smith,3.18,Dimensional,Pass,
-QI000357,GR000357,2025-07-20,M. Weber,5.13,Dimensional,Conditional,Partial rework needed before use.
-QI000358,GR000358,2025-07-10,D. Müller,7.98,Missing,Conditional,Accepted for non-critical applications only.
-QI000359,GR000359,2025-07-15,D. Müller,1.59,,Pass,
-QI000360,GR000360,2025-07-05,P. Kumar,2.72,Surface,Pass,
-QI000361,GR000361,2025-07-08,P. Kumar,3.83,Dimensional,Pass,
-QI000362,GR000362,2025-07-15,D. Müller,7.37,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000363,GR000363,2025-07-17,D. Müller,5.58,Other,Conditional,Accepted for non-critical applications only.
-QI000364,GR000364,2025-07-21,J. Smith,6.3,Surface,Conditional,Partial rework needed before use.
-QI000365,GR000365,2025-07-25,L. Chen,6.34,Missing,Conditional,Partial rework needed before use.
-QI000366,GR000366,2025-07-29,J. Smith,4.43,Dimensional,Pass,
-QI000367,GR000367,2025-08-09,R. Sharma,25.32,Missing,Fail,Critical defects found. Full batch inspection required.
-QI000368,GR000368,2025-07-27,S. Tanaka,1.29,,Pass,
-QI000369,GR000369,2025-08-12,J. Smith,6.23,Other,Conditional,Accepted with minor deviations. Supplier warned.
-QI000370,GR000370,2025-08-13,L. Chen,4.74,Functional,Pass,
-QI000371,GR000371,2025-08-01,D. Müller,7.75,Missing,Conditional,Accepted for non-critical applications only.
-QI000372,GR000372,2025-08-03,M. Weber,2.25,Dimensional,Pass,
-QI000373,GR000373,2025-07-28,M. Weber,7.65,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000374,GR000374,2025-08-05,L. Chen,24.85,Dimensional,Fail,Batch rejected due to high defect rate.
-QI000375,GR000375,2025-08-01,J. Smith,5.83,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000376,GR000376,2025-08-17,R. Sharma,7.91,Functional,Conditional,Partial rework needed before use.
-QI000377,GR000377,2025-08-08,T. Yamamoto,5.19,Functional,Conditional,Partial rework needed before use.
-QI000378,GR000378,2025-08-26,S. Tanaka,7.31,Surface,Conditional,Accepted for non-critical applications only.
-QI000379,GR000379,2025-08-16,L. Chen,1.07,,Pass,
-QI000380,GR000380,2025-09-05,L. Chen,28.81,Functional,Fail,Batch rejected due to high defect rate.
-QI000381,GR000381,2025-08-30,A. Patel,6.37,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000382,GR000382,2025-08-24,D. Müller,7.32,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000383,GR000383,2025-08-22,D. Müller,7.6,Missing,Conditional,Partial rework needed before use.
-QI000384,GR000384,2025-08-21,L. Chen,6.99,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000385,GR000385,2025-08-15,M. Weber,7.19,Other,Conditional,Partial rework needed before use.
-QI000386,GR000386,2025-09-15,A. Patel,7.97,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000387,GR000387,2025-08-27,A. Patel,3.12,Surface,Pass,
-QI000388,GR000388,2025-09-18,J. Smith,6.64,Missing,Conditional,Accepted for non-critical applications only.
-QI000389,GR000389,2025-09-13,R. Sharma,2.0,,Pass,
-QI000390,GR000390,2025-09-24,R. Sharma,24.04,Surface,Fail,Critical defects found. Full batch inspection required.
-QI000391,GR000391,2025-08-24,J. Smith,7.64,Functional,Conditional,Accepted with minor deviations. Supplier warned.
-QI000392,GR000392,2025-09-03,K. Nguyen,7.31,Missing,Conditional,Partial rework needed before use.
-QI000393,GR000393,2025-09-12,M. Weber,4.54,Surface,Pass,
-QI000394,GR000394,2025-09-18,P. Kumar,1.47,,Pass,
-QI000395,GR000395,2025-09-09,D. Müller,2.72,Functional,Pass,
-QI000396,GR000396,2025-09-23,A. Patel,4.83,Dimensional,Pass,
-QI000397,GR000397,2025-09-22,T. Yamamoto,3.87,Dimensional,Pass,
-QI000398,GR000398,2025-09-15,J. Smith,3.86,Functional,Pass,
-QI000399,GR000399,2025-10-06,L. Chen,7.31,Surface,Conditional,Accepted with minor deviations. Supplier warned.
-QI000400,GR000400,2025-09-26,T. Yamamoto,1.41,,Pass,
-QI000401,GR000401,2025-10-05,R. Sharma,20.69,Dimensional,Fail,Batch rejected due to high defect rate.
-QI000402,GR000402,2025-09-30,T. Yamamoto,7.38,Missing,Conditional,Partial rework needed before use.
-QI000403,GR000403,2025-09-27,S. Tanaka,7.37,Missing,Conditional,Accepted for non-critical applications only.
-QI000404,GR000404,2025-09-26,P. Kumar,7.92,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000405,GR000405,2025-10-05,K. Nguyen,3.52,Functional,Pass,
-QI000406,GR000406,2025-10-16,J. Smith,3.72,Surface,Pass,
-QI000407,GR000407,2025-09-26,P. Kumar,23.18,Surface,Fail,Batch rejected due to high defect rate.
-QI000408,GR000408,2025-10-05,J. Smith,7.16,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000409,GR000409,2025-10-06,P. Kumar,3.84,Missing,Pass,
-QI000410,GR000410,2025-10-16,J. Smith,3.72,Functional,Pass,
-QI000411,GR000411,2025-10-01,M. Weber,1.93,,Pass,
-QI000412,GR000412,2025-10-25,T. Yamamoto,5.99,Surface,Conditional,Accepted for non-critical applications only.
-QI000413,GR000413,2025-10-07,S. Tanaka,4.24,Functional,Pass,
-QI000414,GR000414,2025-10-13,D. Müller,1.99,,Pass,
-QI000415,GR000415,2025-10-23,R. Sharma,3.1,Missing,Pass,
-QI000416,GR000416,2025-10-19,D. Müller,3.36,Missing,Pass,
-QI000417,GR000417,2025-10-14,T. Yamamoto,7.6,Surface,Conditional,Partial rework needed before use.
-QI000418,GR000418,2025-11-07,K. Nguyen,2.91,Other,Pass,
-QI000419,GR000419,2025-10-26,J. Smith,5.03,Surface,Conditional,Partial rework needed before use.
-QI000420,GR000420,2025-10-31,T. Yamamoto,7.08,Missing,Conditional,Partial rework needed before use.
-QI000421,GR000421,2025-11-24,A. Patel,5.29,Dimensional,Conditional,Accepted for non-critical applications only.
-QI000422,GR000422,2025-11-10,R. Sharma,3.76,Dimensional,Pass,
-QI000423,GR000423,2025-11-16,J. Smith,7.09,Dimensional,Conditional,Partial rework needed before use.
-QI000424,GR000424,2025-11-11,A. Patel,2.05,Functional,Pass,
-QI000425,GR000425,2025-11-29,J. Smith,7.36,Missing,Conditional,Partial rework needed before use.
-QI000426,GR000426,2025-11-15,K. Nguyen,3.03,Other,Pass,
-QI000427,GR000427,2025-11-24,D. Müller,2.06,Dimensional,Pass,
-QI000428,GR000428,2025-11-24,P. Kumar,3.87,Other,Pass,
-QI000429,GR000429,2025-11-18,K. Nguyen,2.97,Dimensional,Pass,
-QI000430,GR000430,2025-12-09,P. Kumar,19.16,Surface,Fail,Non-conformance report raised. Supplier notified.
-QI000431,GR000431,2025-12-03,J. Smith,2.19,Other,Pass,
-QI000432,GR000432,2025-12-09,P. Kumar,5.09,Missing,Conditional,Accepted with minor deviations. Supplier warned.
-QI000433,GR000433,2025-12-21,J. Smith,4.97,Dimensional,Pass,
-QI000434,GR000434,2025-12-28,A. Patel,19.62,Missing,Fail,Quality below acceptable standards. Return to supplier.
-QI000435,GR000435,2025-12-21,J. Smith,6.54,Surface,Conditional,Accepted for non-critical applications only.
-QI000436,GR000436,2025-12-29,P. Kumar,6.55,Functional,Conditional,Accepted for non-critical applications only.
-QI000437,GR000437,2026-01-02,S. Tanaka,7.24,Surface,Conditional,Partial rework needed before use.
-QI000438,GR000438,2026-01-06,P. Kumar,2.96,Dimensional,Pass,
-QI000439,GR000439,2026-01-06,S. Tanaka,2.17,Surface,Pass,
-QI000440,GR000440,2026-01-06,P. Kumar,7.97,Dimensional,Conditional,Partial rework needed before use.
-QI000441,GR000441,2026-01-03,T. Yamamoto,3.33,Surface,Pass,
-QI000442,GR000442,2026-01-23,P. Kumar,24.88,Missing,Fail,Quality below acceptable standards. Return to supplier.
-QI000443,GR000443,2026-01-19,J. Smith,18.43,Functional,Fail,Non-conformance report raised. Supplier notified.
-QI000444,GR000444,2026-01-12,J. Smith,4.59,Missing,Pass,
-QI000445,GR000445,2026-01-08,S. Tanaka,1.74,,Pass,
-QI000446,GR000446,2026-01-10,P. Kumar,4.42,Dimensional,Pass,
-QI000447,GR000447,2026-01-21,J. Smith,1.59,,Pass,
-QI000448,GR000448,2026-02-10,M. Weber,28.75,Surface,Fail,Batch rejected due to high defect rate.
-QI000449,GR000449,2026-01-24,M. Weber,3.61,Other,Pass,
-QI000450,GR000450,2026-01-21,R. Sharma,3.03,Dimensional,Pass,
-QI000451,GR000451,2026-02-03,A. Patel,0.75,,Pass,
-QI000452,GR000452,2026-01-23,A. Patel,5.38,Functional,Conditional,Accepted for non-critical applications only.
+QI000001,GR000001,2023-01-11,P. Kumar,1.85,,Pass,
+QI000002,GR000002,2023-02-01,P. Kumar,1.8,,Pass,
+QI000003,GR000003,2023-01-21,D. Müller,6.62,Surface,Conditional,Accepted for non-critical applications only.
+QI000004,GR000004,2023-01-21,L. Chen,1.06,,Pass,
+QI000005,GR000005,2023-01-30,J. Smith,6.04,Functional,Conditional,Accepted for non-critical applications only.
+QI000006,GR000006,2023-01-14,K. Nguyen,3.6,Surface,Pass,
+QI000007,GR000007,2023-01-28,T. Yamamoto,5.8,Functional,Conditional,Accepted for non-critical applications only.
+QI000008,GR000008,2023-02-04,D. Müller,23.55,Surface,Fail,Quality below acceptable standards. Return to supplier.
+QI000009,GR000009,2023-02-07,K. Nguyen,4.32,Missing,Pass,
+QI000010,GR000010,2023-02-20,S. Tanaka,1.47,,Pass,
+QI000011,GR000011,2023-02-17,P. Kumar,2.39,Other,Pass,
+QI000012,GR000012,2023-02-24,T. Yamamoto,1.43,,Pass,
+QI000013,GR000013,2023-02-27,J. Smith,3.45,Surface,Pass,
+QI000014,GR000014,2023-03-02,T. Yamamoto,7.5,Functional,Conditional,Partial rework needed before use.
+QI000015,GR000015,2023-03-09,D. Müller,3.57,Functional,Pass,
+QI000016,GR000016,2023-03-14,T. Yamamoto,1.35,,Pass,
+QI000017,GR000017,2023-03-09,T. Yamamoto,6.11,Surface,Conditional,Partial rework needed before use.
+QI000018,GR000018,2023-03-18,T. Yamamoto,6.58,Missing,Conditional,Partial rework needed before use.
+QI000019,GR000019,2023-03-12,P. Kumar,5.15,Other,Conditional,Accepted for non-critical applications only.
+QI000020,GR000020,2023-03-15,M. Weber,1.02,,Pass,
+QI000021,GR000021,2023-03-19,P. Kumar,6.62,Surface,Conditional,Accepted with minor deviations. Supplier warned.
+QI000022,GR000022,2023-03-15,D. Müller,3.26,Surface,Pass,
+QI000023,GR000023,2023-03-18,S. Tanaka,3.98,Functional,Pass,
+QI000024,GR000024,2023-03-27,L. Chen,1.82,,Pass,
+QI000025,GR000025,2023-03-26,D. Müller,22.63,Functional,Fail,Critical defects found. Full batch inspection required.
+QI000026,GR000026,2023-04-20,S. Tanaka,18.94,Surface,Fail,Quality below acceptable standards. Return to supplier.
+QI000027,GR000027,2023-04-20,S. Tanaka,6.88,Missing,Conditional,Partial rework needed before use.
+QI000028,GR000028,2023-04-15,K. Nguyen,4.91,Functional,Pass,
+QI000029,GR000029,2023-04-20,J. Smith,0.79,,Pass,
+QI000030,GR000030,2023-04-08,L. Chen,2.5,Surface,Pass,
+QI000031,GR000031,2023-04-15,J. Smith,7.53,Surface,Conditional,Partial rework needed before use.
+QI000032,GR000032,2023-04-20,J. Smith,1.04,,Pass,
+QI000033,GR000033,2023-04-19,R. Sharma,3.58,Other,Pass,
+QI000034,GR000034,2023-05-08,P. Kumar,1.23,,Pass,
+QI000035,GR000035,2023-04-27,R. Sharma,7.97,Functional,Conditional,Partial rework needed before use.
+QI000036,GR000036,2023-04-25,P. Kumar,11.23,Missing,Fail,Non-conformance report raised. Supplier notified.
+QI000037,GR000037,2023-05-06,R. Sharma,27.0,Other,Fail,Batch rejected due to high defect rate.
+QI000038,GR000038,2023-05-07,K. Nguyen,1.26,,Pass,
+QI000039,GR000039,2023-04-27,L. Chen,2.24,Dimensional,Pass,
+QI000040,GR000040,2023-05-12,R. Sharma,1.84,,Pass,
+QI000041,GR000041,2023-05-06,T. Yamamoto,7.01,Surface,Conditional,Accepted for non-critical applications only.
+QI000042,GR000042,2023-05-07,K. Nguyen,3.33,Functional,Pass,
+QI000043,GR000043,2023-05-25,L. Chen,5.11,Other,Conditional,Accepted with minor deviations. Supplier warned.
+QI000044,GR000044,2023-05-09,D. Müller,5.67,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000045,GR000045,2023-06-07,R. Sharma,2.87,Missing,Pass,
+QI000046,GR000046,2023-05-23,K. Nguyen,2.39,Missing,Pass,
+QI000047,GR000047,2023-05-28,D. Müller,28.11,Functional,Fail,Critical defects found. Full batch inspection required.
+QI000048,GR000048,2023-05-23,T. Yamamoto,3.39,Dimensional,Pass,
+QI000049,GR000049,2023-05-24,K. Nguyen,1.62,,Pass,
+QI000050,GR000050,2023-06-29,R. Sharma,20.23,Dimensional,Fail,Quality below acceptable standards. Return to supplier.
+QI000051,GR000051,2023-06-04,S. Tanaka,3.62,Surface,Pass,
+QI000052,GR000052,2023-06-09,K. Nguyen,1.32,,Pass,
+QI000053,GR000053,2023-06-01,S. Tanaka,3.66,Surface,Pass,
+QI000054,GR000054,2023-06-09,S. Tanaka,3.21,Surface,Pass,
+QI000055,GR000055,2023-06-13,S. Tanaka,20.13,Functional,Fail,Non-conformance report raised. Supplier notified.
+QI000056,GR000056,2023-06-11,D. Müller,3.49,Functional,Pass,
+QI000057,GR000057,2023-06-10,L. Chen,5.42,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000058,GR000058,2023-06-11,J. Smith,4.98,Missing,Pass,
+QI000059,GR000059,2023-06-13,D. Müller,5.77,Surface,Conditional,Partial rework needed before use.
+QI000060,GR000060,2023-06-27,M. Weber,6.2,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000061,GR000061,2023-06-26,D. Müller,4.27,Dimensional,Pass,
+QI000062,GR000062,2023-06-26,T. Yamamoto,2.3,Missing,Pass,
+QI000063,GR000063,2023-06-19,R. Sharma,4.95,Other,Pass,
+QI000064,GR000064,2023-06-20,R. Sharma,1.73,,Pass,
+QI000065,GR000065,2023-07-03,K. Nguyen,4.33,Dimensional,Pass,
+QI000066,GR000066,2023-07-03,D. Müller,10.64,Surface,Fail,Non-conformance report raised. Supplier notified.
+QI000067,GR000067,2023-07-03,P. Kumar,9.19,Missing,Conditional,Accepted for non-critical applications only.
+QI000068,GR000068,2023-07-16,M. Weber,5.86,Missing,Conditional,Partial rework needed before use.
+QI000069,GR000069,2023-07-22,P. Kumar,0.81,,Pass,
+QI000070,GR000070,2023-07-12,A. Patel,3.1,Other,Pass,
+QI000071,GR000071,2023-07-16,R. Sharma,6.42,Missing,Conditional,Accepted for non-critical applications only.
+QI000072,GR000072,2023-07-30,D. Müller,2.16,Other,Pass,
+QI000073,GR000073,2023-07-19,J. Smith,7.81,Surface,Conditional,Accepted for non-critical applications only.
+QI000074,GR000074,2023-08-06,S. Tanaka,1.38,,Pass,
+QI000075,GR000075,2023-08-07,P. Kumar,0.37,,Pass,
+QI000076,GR000076,2023-08-19,M. Weber,4.22,Surface,Pass,
+QI000077,GR000077,2023-08-02,K. Nguyen,10.34,Functional,Fail,Batch rejected due to high defect rate.
+QI000078,GR000078,2023-08-03,K. Nguyen,2.42,Surface,Pass,
+QI000079,GR000079,2023-08-03,K. Nguyen,6.92,Dimensional,Conditional,Partial rework needed before use.
+QI000080,GR000080,2023-08-19,M. Weber,4.3,Missing,Pass,
+QI000081,GR000081,2023-08-10,L. Chen,26.02,Surface,Fail,Batch rejected due to high defect rate.
+QI000082,GR000082,2023-09-02,S. Tanaka,27.16,Missing,Fail,Critical defects found. Full batch inspection required.
+QI000083,GR000083,2023-08-11,D. Müller,6.11,Other,Conditional,Partial rework needed before use.
+QI000084,GR000084,2023-08-13,R. Sharma,4.42,Other,Pass,
+QI000085,GR000085,2023-08-17,J. Smith,5.26,Functional,Conditional,Partial rework needed before use.
+QI000086,GR000086,2023-08-22,L. Chen,1.01,,Pass,
+QI000087,GR000087,2023-09-02,R. Sharma,5.52,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000088,GR000088,2023-08-26,K. Nguyen,4.05,Missing,Pass,
+QI000089,GR000089,2023-08-23,R. Sharma,2.99,Missing,Pass,
+QI000090,GR000090,2023-08-24,D. Müller,7.69,Surface,Conditional,Partial rework needed before use.
+QI000091,GR000091,2023-08-18,A. Patel,4.25,Functional,Pass,
+QI000092,GR000092,2023-08-20,J. Smith,3.83,Surface,Pass,
+QI000093,GR000093,2023-08-30,R. Sharma,4.55,Missing,Pass,
+QI000094,GR000094,2023-08-26,S. Tanaka,7.72,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000095,GR000095,2023-08-28,D. Müller,6.19,Other,Conditional,Partial rework needed before use.
+QI000096,GR000096,2023-09-04,J. Smith,9.09,Functional,Conditional,Accepted for non-critical applications only.
+QI000097,GR000097,2023-08-31,L. Chen,2.25,Other,Pass,
+QI000098,GR000098,2023-08-31,J. Smith,1.56,,Pass,
+QI000099,GR000099,2023-09-29,T. Yamamoto,5.95,Surface,Conditional,Accepted for non-critical applications only.
+QI000100,GR000100,2023-09-21,S. Tanaka,4.18,Missing,Pass,
+QI000101,GR000101,2023-09-24,J. Smith,1.75,,Pass,
+QI000102,GR000102,2023-09-18,J. Smith,5.2,Functional,Conditional,Partial rework needed before use.
+QI000103,GR000103,2023-09-17,K. Nguyen,6.37,Other,Conditional,Partial rework needed before use.
+QI000104,GR000104,2023-10-05,S. Tanaka,3.92,Functional,Pass,
+QI000105,GR000105,2023-09-18,L. Chen,5.17,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000106,GR000106,2023-09-24,K. Nguyen,1.59,,Pass,
+QI000107,GR000107,2023-09-23,P. Kumar,5.43,Functional,Conditional,Partial rework needed before use.
+QI000108,GR000108,2023-10-01,T. Yamamoto,2.71,Other,Pass,
+QI000109,GR000109,2023-10-01,R. Sharma,1.54,,Pass,
+QI000110,GR000110,2023-10-02,D. Müller,7.84,Dimensional,Conditional,Partial rework needed before use.
+QI000111,GR000111,2023-10-12,S. Tanaka,1.55,,Pass,
+QI000112,GR000112,2023-10-12,S. Tanaka,1.16,,Pass,
+QI000113,GR000113,2023-10-20,M. Weber,6.2,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000114,GR000114,2023-10-22,M. Weber,7.96,Other,Conditional,Accepted for non-critical applications only.
+QI000115,GR000115,2023-10-31,P. Kumar,1.34,,Pass,
+QI000116,GR000116,2023-11-17,D. Müller,7.55,Surface,Conditional,Partial rework needed before use.
+QI000117,GR000117,2023-11-01,R. Sharma,5.23,Functional,Conditional,Partial rework needed before use.
+QI000118,GR000118,2023-11-08,K. Nguyen,1.13,,Pass,
+QI000119,GR000119,2023-11-13,A. Patel,4.24,Functional,Pass,
+QI000120,GR000120,2023-11-14,A. Patel,8.31,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000121,GR000121,2023-11-10,L. Chen,6.1,Missing,Conditional,Accepted for non-critical applications only.
+QI000122,GR000122,2023-11-19,P. Kumar,0.72,,Pass,
+QI000123,GR000123,2023-11-19,P. Kumar,18.15,Functional,Fail,Critical defects found. Full batch inspection required.
+QI000124,GR000124,2023-11-15,K. Nguyen,6.98,Surface,Conditional,Accepted for non-critical applications only.
+QI000125,GR000125,2023-11-14,A. Patel,2.79,Other,Pass,
+QI000126,GR000126,2023-11-29,M. Weber,4.93,Dimensional,Pass,
+QI000127,GR000127,2023-11-21,J. Smith,4.71,Functional,Pass,
+QI000128,GR000128,2023-12-08,T. Yamamoto,4.27,Other,Pass,
+QI000129,GR000129,2023-11-29,L. Chen,0.77,,Pass,
+QI000130,GR000130,2023-11-27,D. Müller,1.16,,Pass,
+QI000131,GR000131,2023-12-20,L. Chen,29.88,Other,Fail,Quality below acceptable standards. Return to supplier.
+QI000132,GR000132,2023-12-03,M. Weber,8.85,Dimensional,Conditional,Partial rework needed before use.
+QI000133,GR000133,2023-11-26,K. Nguyen,1.77,,Pass,
+QI000134,GR000134,2023-12-11,L. Chen,6.37,Missing,Conditional,Accepted for non-critical applications only.
+QI000135,GR000135,2023-12-13,J. Smith,2.52,Functional,Pass,
+QI000136,GR000136,2024-01-08,D. Müller,5.41,Functional,Conditional,Accepted for non-critical applications only.
+QI000137,GR000137,2024-01-04,P. Kumar,0.53,,Pass,
+QI000138,GR000138,2024-01-05,K. Nguyen,0.64,,Pass,
+QI000139,GR000139,2024-01-16,D. Müller,2.24,Dimensional,Pass,
+QI000140,GR000140,2024-01-21,L. Chen,27.16,Surface,Fail,Batch rejected due to high defect rate.
+QI000141,GR000141,2024-01-06,M. Weber,3.93,Missing,Pass,
+QI000142,GR000142,2024-01-06,D. Müller,5.33,Other,Conditional,Accepted for non-critical applications only.
+QI000143,GR000143,2024-01-31,J. Smith,5.2,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000144,GR000144,2024-02-04,A. Patel,2.17,Missing,Pass,
+QI000145,GR000145,2024-01-28,L. Chen,1.16,,Pass,
+QI000146,GR000146,2024-01-30,M. Weber,7.04,Missing,Conditional,Partial rework needed before use.
+QI000147,GR000147,2024-01-28,S. Tanaka,7.56,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000148,GR000148,2024-02-04,P. Kumar,1.22,,Pass,
+QI000149,GR000149,2024-02-09,P. Kumar,5.79,Surface,Conditional,Accepted with minor deviations. Supplier warned.
+QI000150,GR000150,2024-02-23,J. Smith,1.78,,Pass,
+QI000151,GR000151,2024-02-15,A. Patel,7.36,Missing,Conditional,Accepted for non-critical applications only.
+QI000152,GR000152,2024-03-11,L. Chen,1.23,,Pass,
+QI000153,GR000153,2024-02-21,S. Tanaka,29.95,Dimensional,Fail,Non-conformance report raised. Supplier notified.
+QI000154,GR000154,2024-02-25,D. Müller,4.76,Other,Pass,
+QI000155,GR000155,2024-02-25,S. Tanaka,4.07,Dimensional,Pass,
+QI000156,GR000156,2024-03-11,L. Chen,8.31,Dimensional,Conditional,Partial rework needed before use.
+QI000157,GR000157,2024-03-18,A. Patel,8.12,Missing,Conditional,Partial rework needed before use.
+QI000158,GR000158,2024-03-25,K. Nguyen,6.93,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000159,GR000159,2024-03-23,M. Weber,5.6,Surface,Conditional,Partial rework needed before use.
+QI000160,GR000160,2024-03-18,P. Kumar,3.31,Dimensional,Pass,
+QI000161,GR000161,2024-03-24,J. Smith,4.44,Functional,Pass,
+QI000162,GR000162,2024-03-26,T. Yamamoto,4.11,Functional,Pass,
+QI000163,GR000163,2024-03-28,K. Nguyen,1.25,,Pass,
+QI000164,GR000164,2024-04-12,T. Yamamoto,1.18,,Pass,
+QI000165,GR000165,2024-04-23,T. Yamamoto,3.04,Surface,Pass,
+QI000166,GR000166,2024-04-08,K. Nguyen,4.33,Functional,Pass,
+QI000167,GR000167,2024-04-12,L. Chen,5.87,Other,Conditional,Partial rework needed before use.
+QI000168,GR000168,2024-04-20,S. Tanaka,2.6,Other,Pass,
+QI000169,GR000169,2024-04-26,D. Müller,1.08,,Pass,
+QI000170,GR000170,2024-04-30,T. Yamamoto,7.94,Missing,Conditional,Partial rework needed before use.
+QI000171,GR000171,2024-05-11,D. Müller,29.67,Surface,Fail,Critical defects found. Full batch inspection required.
+QI000172,GR000172,2024-05-10,P. Kumar,7.06,Surface,Conditional,Accepted for non-critical applications only.
+QI000173,GR000173,2024-04-28,M. Weber,28.77,Dimensional,Fail,Critical defects found. Full batch inspection required.
+QI000174,GR000174,2024-05-01,A. Patel,2.57,Other,Pass,
+QI000175,GR000175,2024-05-05,R. Sharma,3.5,Other,Pass,
+QI000176,GR000176,2024-05-04,M. Weber,6.92,Surface,Conditional,Accepted for non-critical applications only.
+QI000177,GR000177,2024-05-05,A. Patel,1.23,,Pass,
+QI000178,GR000178,2024-05-10,D. Müller,1.06,,Pass,
+QI000179,GR000179,2024-05-27,P. Kumar,28.16,Dimensional,Fail,Batch rejected due to high defect rate.
+QI000180,GR000180,2024-05-20,M. Weber,2.74,Surface,Pass,
+QI000181,GR000181,2024-05-16,S. Tanaka,6.02,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000182,GR000182,2024-05-30,A. Patel,1.64,,Pass,
+QI000183,GR000183,2024-05-24,R. Sharma,1.93,,Pass,
+QI000184,GR000184,2024-05-20,P. Kumar,2.71,Missing,Pass,
+QI000185,GR000185,2024-05-18,A. Patel,7.17,Functional,Conditional,Accepted for non-critical applications only.
+QI000186,GR000186,2024-05-21,P. Kumar,0.32,,Pass,
+QI000187,GR000187,2024-05-15,P. Kumar,4.8,Other,Pass,
+QI000188,GR000188,2024-05-25,A. Patel,1.07,,Pass,
+QI000189,GR000189,2024-05-21,T. Yamamoto,4.1,Surface,Pass,
+QI000190,GR000190,2024-06-01,R. Sharma,1.27,,Pass,
+QI000191,GR000191,2024-06-16,J. Smith,22.89,Missing,Fail,Quality below acceptable standards. Return to supplier.
+QI000192,GR000192,2024-06-04,S. Tanaka,4.6,Functional,Pass,
+QI000193,GR000193,2024-05-29,D. Müller,2.74,Other,Pass,
+QI000194,GR000194,2024-06-07,R. Sharma,4.08,Missing,Pass,
+QI000195,GR000195,2024-06-18,K. Nguyen,7.82,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000196,GR000196,2024-06-02,P. Kumar,4.02,Dimensional,Pass,
+QI000197,GR000197,2024-06-15,M. Weber,5.81,Surface,Conditional,Accepted with minor deviations. Supplier warned.
+QI000198,GR000198,2024-06-21,P. Kumar,4.51,Other,Pass,
+QI000199,GR000199,2024-06-22,T. Yamamoto,3.1,Surface,Pass,
+QI000200,GR000200,2024-06-17,K. Nguyen,3.27,Missing,Pass,
+QI000201,GR000201,2024-06-24,P. Kumar,5.27,Functional,Conditional,Accepted for non-critical applications only.
+QI000202,GR000202,2024-07-02,S. Tanaka,6.52,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000203,GR000203,2024-06-27,S. Tanaka,6.99,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000204,GR000204,2024-06-29,P. Kumar,3.48,Functional,Pass,
+QI000205,GR000205,2024-07-09,L. Chen,4.94,Dimensional,Pass,
+QI000206,GR000206,2024-07-10,P. Kumar,3.86,Surface,Pass,
+QI000207,GR000207,2024-07-05,M. Weber,1.14,,Pass,
+QI000208,GR000208,2024-07-07,J. Smith,6.02,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000209,GR000209,2024-07-26,M. Weber,3.68,Other,Pass,
+QI000210,GR000210,2024-07-22,A. Patel,5.32,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000211,GR000211,2024-07-23,P. Kumar,3.28,Other,Pass,
+QI000212,GR000212,2024-07-25,P. Kumar,7.63,Missing,Conditional,Accepted for non-critical applications only.
+QI000213,GR000213,2024-07-26,L. Chen,1.98,,Pass,
+QI000214,GR000214,2024-08-04,S. Tanaka,1.39,,Pass,
+QI000215,GR000215,2024-07-22,P. Kumar,4.07,Dimensional,Pass,
+QI000216,GR000216,2024-08-07,K. Nguyen,27.0,Missing,Fail,Quality below acceptable standards. Return to supplier.
+QI000217,GR000217,2024-07-29,M. Weber,5.02,Dimensional,Conditional,Partial rework needed before use.
+QI000218,GR000218,2024-08-10,D. Müller,4.83,Functional,Pass,
+QI000219,GR000219,2024-07-23,A. Patel,3.04,Surface,Pass,
+QI000220,GR000220,2024-07-25,P. Kumar,5.89,Functional,Conditional,Partial rework needed before use.
+QI000221,GR000221,2024-08-15,M. Weber,2.5,Missing,Pass,
+QI000222,GR000222,2024-08-14,S. Tanaka,3.33,Functional,Pass,
+QI000223,GR000223,2024-08-11,A. Patel,1.87,,Pass,
+QI000224,GR000224,2024-08-10,D. Müller,3.99,Dimensional,Pass,
+QI000225,GR000225,2024-08-06,R. Sharma,1.98,,Pass,
+QI000226,GR000226,2024-08-05,P. Kumar,7.97,Functional,Conditional,Accepted for non-critical applications only.
+QI000227,GR000227,2024-07-28,T. Yamamoto,3.34,Dimensional,Pass,
+QI000228,GR000228,2024-08-15,K. Nguyen,4.91,Other,Pass,
+QI000229,GR000229,2024-08-08,T. Yamamoto,6.92,Other,Conditional,Partial rework needed before use.
+QI000230,GR000230,2024-08-28,P. Kumar,20.29,Missing,Fail,Critical defects found. Full batch inspection required.
+QI000231,GR000231,2024-08-18,J. Smith,7.16,Surface,Conditional,Accepted for non-critical applications only.
+QI000232,GR000232,2024-08-07,L. Chen,5.53,Missing,Conditional,Accepted for non-critical applications only.
+QI000233,GR000233,2024-08-20,T. Yamamoto,3.81,Dimensional,Pass,
+QI000234,GR000234,2024-08-22,J. Smith,1.13,,Pass,
+QI000235,GR000235,2024-08-19,J. Smith,2.81,Other,Pass,
+QI000236,GR000236,2024-08-19,T. Yamamoto,5.58,Other,Conditional,Partial rework needed before use.
+QI000237,GR000237,2024-08-28,A. Patel,6.41,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000238,GR000238,2024-09-01,K. Nguyen,1.24,,Pass,
+QI000239,GR000239,2024-09-05,M. Weber,7.68,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000240,GR000240,2024-09-13,M. Weber,0.41,,Pass,
+QI000241,GR000241,2024-09-14,K. Nguyen,2.52,Dimensional,Pass,
+QI000242,GR000242,2024-09-06,P. Kumar,7.61,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000243,GR000243,2024-09-07,P. Kumar,6.98,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000244,GR000244,2024-09-12,A. Patel,2.39,Other,Pass,
+QI000245,GR000245,2024-10-02,A. Patel,2.23,Other,Pass,
+QI000246,GR000246,2024-09-22,J. Smith,2.47,Other,Pass,
+QI000247,GR000247,2024-09-19,A. Patel,3.22,Surface,Pass,
+QI000248,GR000248,2024-10-02,A. Patel,3.52,Other,Pass,
+QI000249,GR000249,2024-09-17,L. Chen,1.11,,Pass,
+QI000250,GR000250,2024-09-23,A. Patel,7.0,Functional,Conditional,Partial rework needed before use.
+QI000251,GR000251,2024-10-09,L. Chen,28.17,Surface,Fail,Batch rejected due to high defect rate.
+QI000252,GR000252,2024-09-29,J. Smith,0.13,,Pass,
+QI000253,GR000253,2024-10-06,K. Nguyen,6.93,Other,Conditional,Accepted with minor deviations. Supplier warned.
+QI000254,GR000254,2024-09-21,R. Sharma,1.98,,Pass,
+QI000255,GR000255,2024-09-26,T. Yamamoto,6.62,Functional,Conditional,Partial rework needed before use.
+QI000256,GR000256,2024-10-06,D. Müller,2.1,Surface,Pass,
+QI000257,GR000257,2024-10-09,A. Patel,6.19,Surface,Conditional,Partial rework needed before use.
+QI000258,GR000258,2024-10-10,S. Tanaka,1.21,,Pass,
+QI000259,GR000259,2024-11-04,J. Smith,3.61,Other,Pass,
+QI000260,GR000260,2024-10-12,P. Kumar,1.18,,Pass,
+QI000261,GR000261,2024-10-18,L. Chen,7.1,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000262,GR000262,2024-10-08,R. Sharma,6.06,Surface,Conditional,Accepted with minor deviations. Supplier warned.
+QI000263,GR000263,2024-10-11,A. Patel,2.56,Dimensional,Pass,
+QI000264,GR000264,2024-10-19,P. Kumar,4.25,Other,Pass,
+QI000265,GR000265,2024-11-10,P. Kumar,25.24,Dimensional,Fail,Critical defects found. Full batch inspection required.
+QI000266,GR000266,2024-11-04,D. Müller,7.32,Functional,Conditional,Accepted for non-critical applications only.
+QI000267,GR000267,2024-11-08,P. Kumar,5.3,Dimensional,Conditional,Partial rework needed before use.
+QI000268,GR000268,2024-11-04,K. Nguyen,1.72,,Pass,
+QI000269,GR000269,2024-11-03,M. Weber,1.91,,Pass,
+QI000270,GR000270,2024-11-21,T. Yamamoto,6.2,Missing,Conditional,Partial rework needed before use.
+QI000271,GR000271,2024-11-09,J. Smith,2.58,Functional,Pass,
+QI000272,GR000272,2024-11-29,D. Müller,4.24,Other,Pass,
+QI000273,GR000273,2024-11-20,J. Smith,28.6,Functional,Fail,Non-conformance report raised. Supplier notified.
+QI000274,GR000274,2024-12-11,R. Sharma,5.06,Missing,Conditional,Accepted for non-critical applications only.
+QI000275,GR000275,2024-12-13,R. Sharma,7.86,Surface,Conditional,Accepted for non-critical applications only.
+QI000276,GR000276,2025-01-15,T. Yamamoto,20.85,Functional,Fail,Batch rejected due to high defect rate.
+QI000277,GR000277,2025-01-01,P. Kumar,7.0,Other,Conditional,Partial rework needed before use.
+QI000278,GR000278,2024-12-24,P. Kumar,4.17,Other,Pass,
+QI000279,GR000279,2024-12-30,J. Smith,2.96,Functional,Pass,
+QI000280,GR000280,2024-12-23,D. Müller,2.3,Missing,Pass,
+QI000281,GR000281,2024-12-20,D. Müller,1.68,,Pass,
+QI000282,GR000282,2025-01-07,A. Patel,27.38,Dimensional,Fail,Quality below acceptable standards. Return to supplier.
+QI000283,GR000283,2024-12-28,K. Nguyen,23.49,Dimensional,Fail,Critical defects found. Full batch inspection required.
+QI000284,GR000284,2025-01-07,D. Müller,0.68,,Pass,
+QI000285,GR000285,2025-02-01,K. Nguyen,1.58,,Pass,
+QI000286,GR000286,2025-01-29,M. Weber,7.59,Surface,Conditional,Accepted with minor deviations. Supplier warned.
+QI000287,GR000287,2025-01-18,D. Müller,2.39,Functional,Pass,
+QI000288,GR000288,2025-01-29,R. Sharma,2.06,Other,Pass,
+QI000289,GR000289,2025-01-31,K. Nguyen,3.54,Other,Pass,
+QI000290,GR000290,2025-01-22,T. Yamamoto,1.7,,Pass,
+QI000291,GR000291,2025-02-01,T. Yamamoto,7.51,Surface,Conditional,Accepted for non-critical applications only.
+QI000292,GR000292,2025-02-07,S. Tanaka,2.42,Missing,Pass,
+QI000293,GR000293,2025-02-06,P. Kumar,4.65,Missing,Pass,
+QI000294,GR000294,2025-02-14,S. Tanaka,6.05,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000295,GR000295,2025-03-03,A. Patel,5.68,Other,Conditional,Accepted for non-critical applications only.
+QI000296,GR000296,2025-02-03,K. Nguyen,3.87,Missing,Pass,
+QI000297,GR000297,2025-02-13,L. Chen,6.65,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000298,GR000298,2025-02-09,M. Weber,2.35,Dimensional,Pass,
+QI000299,GR000299,2025-02-21,T. Yamamoto,2.93,Dimensional,Pass,
+QI000300,GR000300,2025-02-25,S. Tanaka,2.06,Surface,Pass,
+QI000301,GR000301,2025-03-02,D. Müller,1.08,,Pass,
+QI000302,GR000302,2025-03-05,T. Yamamoto,1.72,,Pass,
+QI000303,GR000303,2025-02-25,T. Yamamoto,5.62,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000304,GR000304,2025-02-27,J. Smith,1.49,,Pass,
+QI000305,GR000305,2025-03-04,A. Patel,7.65,Missing,Conditional,Partial rework needed before use.
+QI000306,GR000306,2025-03-10,S. Tanaka,3.98,Missing,Pass,
+QI000307,GR000307,2025-03-19,T. Yamamoto,1.72,,Pass,
+QI000308,GR000308,2025-02-28,L. Chen,7.06,Missing,Conditional,Accepted for non-critical applications only.
+QI000309,GR000309,2025-03-24,D. Müller,5.47,Functional,Conditional,Partial rework needed before use.
+QI000310,GR000310,2025-03-29,R. Sharma,5.67,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000311,GR000311,2025-04-12,M. Weber,6.64,Other,Conditional,Partial rework needed before use.
+QI000312,GR000312,2025-04-10,T. Yamamoto,5.66,Missing,Conditional,Accepted for non-critical applications only.
+QI000313,GR000313,2025-04-14,T. Yamamoto,22.51,Missing,Fail,Batch rejected due to high defect rate.
+QI000314,GR000314,2025-04-04,A. Patel,6.87,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000315,GR000315,2025-04-16,T. Yamamoto,6.35,Other,Conditional,Accepted for non-critical applications only.
+QI000316,GR000316,2025-04-12,J. Smith,4.45,Dimensional,Pass,
+QI000317,GR000317,2025-04-27,D. Müller,4.08,Other,Pass,
+QI000318,GR000318,2025-04-26,R. Sharma,3.79,Missing,Pass,
+QI000319,GR000319,2025-04-22,A. Patel,2.27,Functional,Pass,
+QI000320,GR000320,2025-04-23,S. Tanaka,3.89,Missing,Pass,
+QI000321,GR000321,2025-05-04,P. Kumar,5.78,Surface,Conditional,Partial rework needed before use.
+QI000322,GR000322,2025-05-07,K. Nguyen,3.27,Functional,Pass,
+QI000323,GR000323,2025-04-30,L. Chen,6.4,Functional,Conditional,Accepted for non-critical applications only.
+QI000324,GR000324,2025-05-02,J. Smith,6.47,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000325,GR000325,2025-05-06,J. Smith,1.12,,Pass,
+QI000326,GR000326,2025-05-14,A. Patel,1.71,,Pass,
+QI000327,GR000327,2025-05-27,L. Chen,3.19,Surface,Pass,
+QI000328,GR000328,2025-05-20,P. Kumar,6.99,Functional,Conditional,Partial rework needed before use.
+QI000329,GR000329,2025-05-29,A. Patel,6.28,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000330,GR000330,2025-05-26,D. Müller,0.69,,Pass,
+QI000331,GR000331,2025-05-24,T. Yamamoto,4.92,Missing,Pass,
+QI000332,GR000332,2025-05-21,A. Patel,4.76,Dimensional,Pass,
+QI000333,GR000333,2025-05-30,K. Nguyen,7.4,Missing,Conditional,Partial rework needed before use.
+QI000334,GR000334,2025-05-22,L. Chen,4.73,Surface,Pass,
+QI000335,GR000335,2025-05-25,A. Patel,7.69,Other,Conditional,Accepted for non-critical applications only.
+QI000336,GR000336,2025-05-20,D. Müller,2.57,Surface,Pass,
+QI000337,GR000337,2025-06-03,M. Weber,7.95,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000338,GR000338,2025-05-26,K. Nguyen,2.58,Surface,Pass,
+QI000339,GR000339,2025-06-03,P. Kumar,2.71,Other,Pass,
+QI000340,GR000340,2025-06-10,T. Yamamoto,0.89,,Pass,
+QI000341,GR000341,2025-06-12,T. Yamamoto,0.45,,Pass,
+QI000342,GR000342,2025-06-28,S. Tanaka,24.91,Functional,Fail,Critical defects found. Full batch inspection required.
+QI000343,GR000343,2025-06-05,D. Müller,3.55,Functional,Pass,
+QI000344,GR000344,2025-06-17,J. Smith,1.92,,Pass,
+QI000345,GR000345,2025-06-18,K. Nguyen,7.9,Other,Conditional,Accepted for non-critical applications only.
+QI000346,GR000346,2025-06-20,J. Smith,7.42,Missing,Conditional,Accepted for non-critical applications only.
+QI000347,GR000347,2025-06-27,D. Müller,6.78,Functional,Conditional,Accepted for non-critical applications only.
+QI000348,GR000348,2025-06-25,R. Sharma,2.57,Other,Pass,
+QI000349,GR000349,2025-06-29,T. Yamamoto,4.05,Missing,Pass,
+QI000350,GR000350,2025-08-03,D. Müller,29.44,Dimensional,Fail,Non-conformance report raised. Supplier notified.
+QI000351,GR000351,2025-07-17,J. Smith,7.27,Surface,Conditional,Accepted with minor deviations. Supplier warned.
+QI000352,GR000352,2025-07-06,R. Sharma,6.03,Functional,Conditional,Accepted for non-critical applications only.
+QI000353,GR000353,2025-07-12,L. Chen,4.44,Surface,Pass,
+QI000354,GR000354,2025-06-28,J. Smith,4.16,Functional,Pass,
+QI000355,GR000355,2025-07-23,D. Müller,6.59,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000356,GR000356,2025-07-09,J. Smith,5.11,Other,Conditional,Accepted with minor deviations. Supplier warned.
+QI000357,GR000357,2025-07-16,T. Yamamoto,1.57,,Pass,
+QI000358,GR000358,2025-07-06,M. Weber,3.9,Surface,Pass,
+QI000359,GR000359,2025-07-07,P. Kumar,6.42,Surface,Conditional,Accepted with minor deviations. Supplier warned.
+QI000360,GR000360,2025-07-26,T. Yamamoto,3.32,Missing,Pass,
+QI000361,GR000361,2025-07-18,P. Kumar,5.8,Missing,Conditional,Accepted for non-critical applications only.
+QI000362,GR000362,2025-07-21,J. Smith,3.4,Functional,Pass,
+QI000363,GR000363,2025-07-28,A. Patel,4.01,Missing,Pass,
+QI000364,GR000364,2025-07-29,A. Patel,3.81,Functional,Pass,
+QI000365,GR000365,2025-08-10,T. Yamamoto,27.02,Functional,Fail,Batch rejected due to high defect rate.
+QI000366,GR000366,2025-07-31,A. Patel,4.9,Functional,Pass,
+QI000367,GR000367,2025-08-12,J. Smith,7.75,Dimensional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000368,GR000368,2025-08-15,T. Yamamoto,1.19,,Pass,
+QI000369,GR000369,2025-08-04,M. Weber,1.49,,Pass,
+QI000370,GR000370,2025-08-05,J. Smith,4.49,Surface,Pass,
+QI000371,GR000371,2025-07-28,T. Yamamoto,5.78,Other,Conditional,Partial rework needed before use.
+QI000372,GR000372,2025-08-04,P. Kumar,23.29,Other,Fail,Quality below acceptable standards. Return to supplier.
+QI000373,GR000373,2025-08-07,A. Patel,1.27,,Pass,
+QI000374,GR000374,2025-08-18,J. Smith,3.18,Dimensional,Pass,
+QI000375,GR000375,2025-08-07,M. Weber,5.13,Dimensional,Conditional,Partial rework needed before use.
+QI000376,GR000376,2025-08-29,D. Müller,7.98,Missing,Conditional,Accepted for non-critical applications only.
+QI000377,GR000377,2025-08-15,J. Smith,6.49,Other,Conditional,Accepted with minor deviations. Supplier warned.
+QI000378,GR000378,2025-09-07,R. Sharma,19.7,Surface,Fail,Non-conformance report raised. Supplier notified.
+QI000379,GR000379,2025-09-03,D. Müller,7.42,Other,Conditional,Accepted with minor deviations. Supplier warned.
+QI000380,GR000380,2025-08-27,D. Müller,5.58,Other,Conditional,Accepted for non-critical applications only.
+QI000381,GR000381,2025-08-23,J. Smith,6.3,Surface,Conditional,Partial rework needed before use.
+QI000382,GR000382,2025-08-21,L. Chen,6.34,Missing,Conditional,Partial rework needed before use.
+QI000383,GR000383,2025-08-21,J. Smith,4.43,Dimensional,Pass,
+QI000384,GR000384,2025-09-17,R. Sharma,5.27,Missing,Conditional,Partial rework needed before use.
+QI000385,GR000385,2025-08-28,A. Patel,3.71,Surface,Pass,
+QI000386,GR000386,2025-09-21,J. Smith,5.11,Other,Conditional,Accepted with minor deviations. Supplier warned.
+QI000387,GR000387,2025-09-11,L. Chen,4.74,Functional,Pass,
+QI000388,GR000388,2025-09-25,D. Müller,29.57,Missing,Fail,Quality below acceptable standards. Return to supplier.
+QI000389,GR000389,2025-08-27,K. Nguyen,5.89,Dimensional,Conditional,Partial rework needed before use.
+QI000390,GR000390,2025-09-04,M. Weber,5.99,Surface,Conditional,Partial rework needed before use.
+QI000391,GR000391,2025-09-15,A. Patel,5.29,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000392,GR000392,2025-09-19,J. Smith,0.11,,Pass,
+QI000393,GR000393,2025-09-11,R. Sharma,7.91,Functional,Conditional,Partial rework needed before use.
+QI000394,GR000394,2025-09-26,T. Yamamoto,5.19,Functional,Conditional,Partial rework needed before use.
+QI000395,GR000395,2025-09-23,S. Tanaka,7.31,Surface,Conditional,Accepted for non-critical applications only.
+QI000396,GR000396,2025-09-13,L. Chen,3.24,Missing,Pass,
+QI000397,GR000397,2025-10-09,T. Yamamoto,6.9,Missing,Conditional,Partial rework needed before use.
+QI000398,GR000398,2025-09-26,M. Weber,5.85,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000399,GR000399,2025-10-06,K. Nguyen,19.37,Missing,Fail,Batch rejected due to high defect rate.
+QI000400,GR000400,2025-10-02,L. Chen,2.17,Functional,Pass,
+QI000401,GR000401,2025-09-29,A. Patel,3.01,Functional,Pass,
+QI000402,GR000402,2025-09-26,D. Müller,3.76,Dimensional,Pass,
+QI000403,GR000403,2025-10-09,P. Kumar,2.41,Dimensional,Pass,
+QI000404,GR000404,2025-10-15,L. Chen,1.78,,Pass,
+QI000405,GR000405,2025-09-25,T. Yamamoto,27.15,Surface,Fail,Non-conformance report raised. Supplier notified.
+QI000406,GR000406,2025-10-08,D. Müller,6.17,Other,Conditional,Accepted with minor deviations. Supplier warned.
+QI000407,GR000407,2025-10-05,R. Sharma,2.32,Functional,Pass,
+QI000408,GR000408,2025-10-19,J. Smith,7.64,Functional,Conditional,Accepted with minor deviations. Supplier warned.
+QI000409,GR000409,2025-10-02,K. Nguyen,7.31,Missing,Conditional,Partial rework needed before use.
+QI000410,GR000410,2025-10-23,M. Weber,4.54,Surface,Pass,
+QI000411,GR000411,2025-10-08,M. Weber,6.05,Missing,Conditional,Accepted with minor deviations. Supplier warned.
+QI000412,GR000412,2025-10-14,D. Müller,3.01,Surface,Pass,
+QI000413,GR000413,2025-10-23,A. Patel,1.4,,Pass,
+QI000414,GR000414,2025-10-24,J. Smith,4.74,Surface,Pass,
+QI000415,GR000415,2025-10-20,M. Weber,2.0,,Pass,
+QI000416,GR000416,2025-11-11,L. Chen,1.02,,Pass,
+QI000417,GR000417,2025-10-30,R. Sharma,1.84,,Pass,
+QI000418,GR000418,2025-11-09,P. Kumar,1.52,,Pass,
+QI000419,GR000419,2025-11-25,P. Kumar,5.51,Other,Conditional,Partial rework needed before use.
+QI000420,GR000420,2025-11-12,T. Yamamoto,3.77,Missing,Pass,
+QI000421,GR000421,2025-11-18,K. Nguyen,7.86,Missing,Conditional,Partial rework needed before use.
+QI000422,GR000422,2025-11-13,K. Nguyen,7.16,Surface,Conditional,Partial rework needed before use.
+QI000423,GR000423,2025-11-29,J. Smith,3.72,Surface,Pass,
+QI000424,GR000424,2025-11-17,R. Sharma,4.02,Surface,Pass,
+QI000425,GR000425,2025-11-27,K. Nguyen,5.97,Surface,Conditional,Partial rework needed before use.
+QI000426,GR000426,2025-11-27,L. Chen,3.47,Missing,Pass,
+QI000427,GR000427,2025-11-20,J. Smith,4.17,Missing,Pass,
+QI000428,GR000428,2025-12-17,M. Weber,25.98,Other,Fail,Quality below acceptable standards. Return to supplier.
+QI000429,GR000429,2025-12-08,J. Smith,2.34,Other,Pass,
+QI000430,GR000430,2025-12-17,S. Tanaka,4.84,Functional,Pass,
+QI000431,GR000431,2025-12-20,D. Müller,1.99,,Pass,
+QI000432,GR000432,2026-01-05,M. Weber,21.6,Missing,Fail,Batch rejected due to high defect rate.
+QI000433,GR000433,2025-12-24,D. Müller,4.86,Missing,Pass,
+QI000434,GR000434,2026-01-02,T. Yamamoto,7.6,Surface,Conditional,Partial rework needed before use.
+QI000435,GR000435,2026-01-06,K. Nguyen,2.91,Other,Pass,
+QI000436,GR000436,2026-01-04,J. Smith,5.03,Surface,Conditional,Partial rework needed before use.
+QI000437,GR000437,2026-01-05,T. Yamamoto,7.08,Missing,Conditional,Partial rework needed before use.
+QI000438,GR000438,2026-01-07,A. Patel,5.29,Dimensional,Conditional,Accepted for non-critical applications only.
+QI000439,GR000439,2026-01-08,R. Sharma,1.6,,Pass,
+QI000440,GR000440,2026-01-24,M. Weber,19.08,Surface,Fail,Quality below acceptable standards. Return to supplier.
+QI000441,GR000441,2026-01-24,P. Kumar,18.79,Functional,Fail,Non-conformance report raised. Supplier notified.
+QI000442,GR000442,2026-01-12,D. Müller,2.23,Dimensional,Pass,
+QI000443,GR000443,2026-01-07,K. Nguyen,1.79,,Pass,
+QI000444,GR000444,2026-01-15,K. Nguyen,4.73,Missing,Pass,
+QI000445,GR000445,2026-01-23,M. Weber,5.4,Functional,Conditional,Accepted for non-critical applications only.
+QI000446,GR000446,2026-02-12,R. Sharma,25.97,Missing,Fail,Batch rejected due to high defect rate.
+QI000447,GR000447,2026-01-25,K. Nguyen,3.67,Missing,Pass,
+QI000448,GR000448,2026-01-25,P. Kumar,3.01,Functional,Pass,
+QI000449,GR000449,2026-02-03,P. Kumar,0.45,,Pass,

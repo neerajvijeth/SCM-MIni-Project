@@ -17,7 +17,7 @@
 
 ## Abstract
 
-Supplier Relationship Management (SRM) remains a critical yet often under-instrumented component of modern supply chains. This project addresses Problem Statement P6, which identifies inefficiencies in supplier performance tracking, communication management, quality inspection processes, and contract lifecycle oversight. We developed a comprehensive Python-based analytical platform comprising a SQLite relational database (6 tables, 30 suppliers, 500+ purchase orders), three machine learning models, and an interactive five-page dashboard built with Plotly Dash. The lead time forecasting model (Random Forest Regressor) achieves an RMSE of approximately 2.3 days, enabling proactive procurement planning. The supplier risk classification model attains approximately 91% accuracy in categorising suppliers into Low, Medium, and High risk tiers. An Isolation Forest-based anomaly detection system flags approximately 25 statistically anomalous goods receipts, uncovering potential quality failures and data entry errors. Together, these components transform reactive SRM into a data-driven, predictive discipline — delivering estimated savings of 18% in safety stock holding costs and providing actionable visibility into supplier performance, quality trends, and contractual compliance.
+Supplier Relationship Management (SRM) remains a critical yet often under-instrumented component of modern supply chains. This project addresses Problem Statement P6, which identifies inefficiencies in supplier performance tracking, communication management, quality inspection processes, and contract lifecycle oversight. We developed a comprehensive Python-based analytical platform comprising a SQLite relational database (6 tables, 30 suppliers, 500 purchase orders), three machine learning models, and an interactive five-page dashboard built with Plotly Dash. On the latest reproducible run, the lead time forecasting module reports RMSE 3.85 days (Random Forest) and RMSE 3.67 days (Linear baseline), the supplier risk classifier reports 83.33% accuracy with weighted F1 0.815, and the Isolation Forest flags 23 anomalous goods receipts out of 449 analyzed. Together, these components transform reactive SRM into a data-driven discipline by providing actionable visibility into supplier performance, quality trends, contractual compliance, and exception handling.
 
 ---
 
@@ -65,7 +65,7 @@ Each SRM sub-problem carries quantifiable business impact:
 
 **Communication delays** create invisible but significant procurement cycle extensions. When supplier response times exceed 48 hours, procurement cycles extend by an average of 3 days. Across 500 orders per year, this represents 1,500 days of cumulative delay — time during which purchase orders remain in limbo, safety stock depletes, and production planning becomes uncertain.
 
-**Lead time unpredictability,** measured as ±30% lead time variance, forces safety stock levels 20–25% higher than would be necessary with predictable suppliers. With our lead time forecasting model achieving approximately 2.3-day RMSE, we estimate that safety stock can be reduced by 18%, saving approximately ₹2.5 Crore per year for a ₹50 Crore procurement operation.
+**Lead time unpredictability,** measured as ±30% lead time variance, forces safety stock levels 20–25% higher than would be necessary with predictable suppliers. In our current run, lead time prediction error remains in the 3.7–3.9 day range, which is still useful for planning buffers but should be treated as directional support rather than precise day-level commitment.
 
 **Contract lapses** expose the organisation to spot-market pricing. Each unmanaged contract expiry creates 2–4 weeks of emergency procurement at rates typically 18–22% above negotiated contract prices. Our system identifies 3 contracts expiring in April 2026, representing approximately ₹4.2 Crore in annual procurement value requiring urgent renewal action.
 
@@ -196,11 +196,11 @@ The 12 KPIs selected for this dashboard were chosen based on their direct releva
 
 **Features.** The model uses 7 features plus category one-hot encoding: supplier identity (label-encoded), order quantity, unit price, order month, order quarter, historical average lead time per supplier, and historical delay rate per supplier. The historical features inject supplier-specific context, enabling the model to learn that certain suppliers are inherently faster or slower.
 
-**Results.** The Random Forest achieves an RMSE of approximately 2.3 days (compared to Linear Regression's approximately 4.1 days), representing a 44% improvement in prediction accuracy. The R² score of approximately 0.72 indicates that the model explains about 72% of lead time variance. Feature importance analysis reveals that historical average lead time and supplier identity are the strongest predictors, followed by order quantity and category.
+**Results.** In the latest run, Linear Regression achieved RMSE 3.67 with R² 0.728, while Random Forest achieved RMSE 3.85 with R² 0.701. This indicates that for the current synthetic dataset, the linear baseline slightly outperforms the non-linear model. Feature-importance analysis from Random Forest still shows expected drivers such as expected lead time, supplier behavior history, and category effects.
 
 **ARIMA forecasting** for the top 5 suppliers (by PO volume) generates 3-month-ahead predictions with 95% confidence intervals. These forecasts are displayed on the dashboard's Lead Time & Forecasting page, enabling procurement teams to anticipate delivery timing and adjust plans accordingly.
 
-**Business impact.** With 2.3-day prediction accuracy, safety stock levels can be calibrated more precisely. For a manufacturer with ₹50 Crore annual procurement, we estimate an 18% reduction in safety stock is achievable, translating to approximately ₹2.5 Crore in annual holding cost savings.
+**Business impact.** Even with 3.7–3.9 day prediction error, the forecasting module improves planning visibility for procurement teams by quantifying likely delay windows and supporting safer reorder timing decisions during demand peaks.
 
 ### 5.2 Model 2 — Supplier Risk Scoring (Classification)
 
@@ -210,7 +210,7 @@ The 12 KPIs selected for this dashboard were chosen based on their direct releva
 
 **Features.** Eight features are engineered per supplier: on-time delivery rate, average defect rate, average lead time, lead time variance, average communication response time, SLA breach count, PO fulfillment rate, and contract compliance status. The risk score is computed as a weighted penalty formula combining delivery (30%), quality (30%), responsiveness (20%), and fulfillment (20%) dimensions.
 
-**Results.** The classifier achieves approximately 91% accuracy and 0.90 weighted F1-score on the test set (80/20 split, stratified). The confusion matrix shows strong performance across all three classes, with occasional misclassification between Medium and Low risk suppliers — an expected boundary effect. All High-risk suppliers (SUP007, SUP014, SUP021) are correctly identified.
+**Results.** The classifier achieves 83.33% accuracy and 0.815 weighted F1-score on the test set (80/20 split, stratified). The confusion matrix shows strong recall for the Medium class and partial confusion between High and Medium classes. Because this dataset has very few Low-risk samples, class-wise stability is sensitive to split composition.
 
 **Business impact.** Proactive risk identification enables procurement teams to implement mitigation strategies before disruptions occur: dual-sourcing for high-risk material categories, increased inspection frequency for high-risk suppliers, and escalated communication protocols for suppliers with deteriorating responsiveness.
 
@@ -222,9 +222,9 @@ The 12 KPIs selected for this dashboard were chosen based on their direct releva
 
 **Features.** Four features characterise each receipt: defect rate percentage, fulfillment ratio (received/ordered quantity), delivery delay in days, and unit price deviation from the supplier's baseline price index. These four dimensions capture quality, quantity, timing, and cost anomalies respectively.
 
-**Results.** The model flags approximately 25 anomalous receipts out of the total. Analysis of these flagged receipts reveals that 18 (approximately 72%) originate from the three known high-risk suppliers (SUP007, SUP014, SUP021), validating the model's effectiveness. The remaining 7 represent unusual but legitimate supply events (e.g., significant partial shipments, extreme price deviations during raw material volatility).
+**Results.** The model flags 23 anomalous receipts out of 449 analyzed records (5.12%), matching the configured contamination level of 5%. Most flagged points show extreme combinations of delay, defect rates, and fulfillment shortfall, making them suitable candidates for priority manual review.
 
-**Business impact.** Anomaly flagging enables quality managers to prioritise their investigation efforts. Instead of reviewing hundreds of receipts manually, they can focus on the 25 flagged records that are most likely to reveal quality issues, fraud, or process failures. The estimated annual value of prevented quality losses and fraud detection exceeds ₹50 Lakhs for a mid-size manufacturer.
+**Business impact.** Anomaly flagging enables quality managers to prioritise investigation effort. Instead of reviewing all 449 receipts manually, teams can first inspect the 23 highest-risk records for likely quality issues, process failures, or unusual transactions.
 
 ---
 
@@ -246,7 +246,7 @@ Three contracts (SUP005, SUP012, SUP019) expire between April 10–30, 2026, rep
 Email accounts for approximately 58% of all supplier communications but has the highest average response time at about 31 hours, compared to 8 hours for Portal communications. This insight suggests a strategic case for migrating high-priority supplier communications from email to the procurement portal, where response time SLAs can be enforced programmatically and response tracking is automated.
 
 ### Insight 6: Anomaly Detection Validates Risk Classification
-The Isolation Forest flagged approximately 25 anomalous goods receipts. Investigation reveals that 18 of these (72%) originate from the three suppliers independently identified as High Risk by Model 2. This cross-validation between unsupervised anomaly detection and supervised risk classification strengthens confidence in both models' outputs and confirms that high-risk suppliers manifest their risk through measurable operational anomalies.
+The Isolation Forest flagged 23 anomalous goods receipts in the current run. This cross-validates the dashboard's exception-monitoring flow by concentrating analyst attention on a small, high-priority subset instead of the full receipt volume.
 
 ### Insight 7: SUP010 Demonstrates Successful Supplier Development
 SUP010's defect rate shows a statistically significant declining trend from 12% in January 2023 to 3% by March 2026 — a 75% improvement over three years. This trajectory correlates with the implementation of a supplier development programme (tracked through increased communication frequency and conditional inspection outcomes). The insight validates that structured supplier improvement initiatives, when tracked through data, can transform underperforming suppliers into reliable partners.
