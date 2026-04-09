@@ -1,0 +1,31 @@
+contract_id,supplier_id,start_date,end_date,value_inr,sla_lead_time_days,sla_defect_limit_pct,penalty_clause,renewal_status
+CT000001,SUP001,2022-12-23,2027-06-16,14609658.59,12,7.7,Contract review triggered after 3 consecutive SLA breaches,Active
+CT000002,SUP002,2022-04-19,2026-10-19,41920125.16,15,4.8,2% penalty per day of delay beyond SLA lead time,Active
+CT000003,SUP003,2022-03-02,2026-09-30,39964323.15,23,2.7,5% deduction for defect rate exceeding SLA limit,Renewed
+CT000004,SUP004,2023-02-27,2027-12-20,11877621.22,21,4.4,2% penalty per day of delay beyond SLA lead time,Renewed
+CT000005,SUP005,2025-02-02,2026-04-25,21478361.26,8,5.3,Supplier bears return shipping for rejected batches,Under Review
+CT000006,SUP006,2023-01-11,2027-09-02,5816406.64,25,2.2,2% penalty per day of delay beyond SLA lead time,Renewed
+CT000007,SUP007,2022-09-06,2025-08-27,3509720.82,9,3.2,2% penalty per day of delay beyond SLA lead time,Expired
+CT000008,SUP008,2022-04-15,2027-02-08,3167212.42,14,4.0,2% penalty per day of delay beyond SLA lead time,Active
+CT000009,SUP009,2022-10-22,2027-06-05,48513478.82,15,5.0,5% deduction for defect rate exceeding SLA limit,Active
+CT000010,SUP010,2022-06-29,2026-09-25,35351204.79,7,2.1,10% rebate on next order for quality failures,Active
+CT000011,SUP011,2022-12-30,2027-09-01,21582465.4,20,5.6,10% rebate on next order for quality failures,Renewed
+CT000012,SUP012,2024-12-27,2026-04-10,6464570.52,7,4.0,5% deduction for defect rate exceeding SLA limit,Under Review
+CT000013,SUP013,2022-06-10,2028-09-20,40588369.37,21,7.5,10% rebate on next order for quality failures,Active
+CT000014,SUP014,2023-06-20,2025-09-09,41248057.18,9,4.1,2% penalty per day of delay beyond SLA lead time,Expired
+CT000015,SUP015,2022-05-22,2028-05-17,42760606.26,7,2.2,Contract review triggered after 3 consecutive SLA breaches,Active
+CT000016,SUP016,2023-03-12,2026-09-11,15874763.67,17,5.8,2% penalty per day of delay beyond SLA lead time,Active
+CT000017,SUP017,2022-04-30,2026-07-22,22623103.38,22,6.0,2% penalty per day of delay beyond SLA lead time,Active
+CT000018,SUP018,2022-02-08,2026-06-21,37576622.04,15,5.5,Supplier bears return shipping for rejected batches,Active
+CT000019,SUP019,2025-03-24,2026-04-27,41117098.5,25,6.5,Contract review triggered after 3 consecutive SLA breaches,Under Review
+CT000020,SUP020,2022-11-19,2027-02-11,33551629.45,9,3.9,5% deduction for defect rate exceeding SLA limit,Active
+CT000021,SUP021,2023-09-24,2025-06-11,30722640.93,23,2.2,Supplier bears return shipping for rejected batches,Expired
+CT000022,SUP022,2023-09-05,2028-09-19,25096838.36,19,6.7,Supplier bears return shipping for rejected batches,Active
+CT000023,SUP023,2023-10-17,2027-01-16,32577332.24,13,4.8,10% rebate on next order for quality failures,Active
+CT000024,SUP024,2023-03-01,2027-06-27,30347855.54,16,2.6,10% rebate on next order for quality failures,Active
+CT000025,SUP025,2022-06-02,2027-01-08,24505293.52,8,4.9,Supplier bears return shipping for rejected batches,Active
+CT000026,SUP026,2022-08-27,2028-09-28,9122673.39,17,4.6,5% deduction for defect rate exceeding SLA limit,Active
+CT000027,SUP027,2023-06-12,2028-04-16,29753265.74,16,5.5,2% penalty per day of delay beyond SLA lead time,Active
+CT000028,SUP028,2023-04-02,2028-09-04,1225693.67,15,3.0,10% rebate on next order for quality failures,Active
+CT000029,SUP029,2023-11-08,2026-10-21,1802194.08,21,2.3,10% rebate on next order for quality failures,Active
+CT000030,SUP030,2023-07-08,2028-10-12,8990645.09,9,4.5,5% deduction for defect rate exceeding SLA limit,Active
