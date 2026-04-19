@@ -1,114 +1,132 @@
-# SCME P6: Supplier Relationship Management
+# Supplier Relationship Management (SCM P6)
 
-This project is a complete, full-stack Supplier Relationship Management (SRM) platform built with Python, Plotly Dash, Scikit-Learn, and SQLite. It addresses **Problem Statement P6** for the SCME course by providing an interactive 5-page dashboard that integrates 3 Machine Learning models.
-
-## Features
-- **Database:** Synthetic SQLite database with 6 tables mapping purchase orders, suppliers, contracts, quality inspections, and communications.
-- **ML Integration:**
-  - Lead Time Forecasting (Random Forest + ARIMA)
-  - Supplier Risk Classification (Random Forest Classifier)
-  - Anomaly Detection in Goods Receipts (Isolation Forest)
-- **Interactive Dashboard:** 5 unique pages with global filters to monitor executive KPIs, supplier performance scorecards, lead times, quality defects, and communication SLAs.
+A small **end-to-end supply-chain analytics demo** for coursework **Problem Statement P6**. It turns synthetic supplier and order data into **KPIs, charts, and ML insights** so you can explore how procurement teams might monitor delivery, quality, risk, and contracts in one place.
 
 ---
 
-## 🚀 How to Run the Project from Scratch
+## What this project does
 
-Follow these steps to set up and run the dashboard on your local machine.
-
-### Prerequisites
-Make sure you have **Python 3.10+** installed. You can check your version by running:
-```bash
-python3 --version
-```
-
-### 1. Create a Virtual Environment
-It is highly recommended to run this project inside an isolated virtual environment so it doesn't interfere with your system's Python packages.
-
-Open your terminal, navigate to the project folder, and run:
-```bash
-python3 -m venv venv
-```
-
-### 2. Activate the Virtual Environment
-Activate the environment you just created.
-- **On macOS/Linux:**
-  ```bash
-  source venv/bin/activate
-  ```
-- **On Windows:**
-  ```bash
-  venv\Scripts\activate
-  ```
-*(You will know it's activated if you see `(venv)` at the beginning of your terminal prompt).*
-
-### 3. Install Dependencies
-With the environment activated, install all the required Python libraries:
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Generate the Database & Sample Data
-Run the data generator. This creates the `scm_p6.db` SQLite database and populated CSV files with 30 simulated suppliers and historical purchase orders.
-```bash
-python generate_data.py
-```
-
-### 5. Train the Machine Learning Models
-Run the ML script to train the models and generate prediction CSVs (`lead_time_predictions.csv`, `supplier_risk_scores.csv`, `anomaly_flags.csv`). This process takes ~10-15 seconds.
-```bash
-python models.py
-```
-
-### 6. Start the Dashboard
-Finally, launch the Plotly Dash web application:
-```bash
-python app.py
-```
-
-### 7. View the Dashboard
-Once the server starts, it will say `Dash is running on http://127.0.0.1:8050/`.
-Open your web browser (Chrome, Firefox, Safari) and go to: **[http://127.0.0.1:8050/](http://127.0.0.1:8050/)**
-
-To stop the server at any time, go to your terminal and press `Control + C`.
+- **Stores** supplier, purchase order, goods receipt, quality, communication, and contract data in **SQLite** (`scm_p6.db`), with CSV exports you can inspect directly.
+- **Trains three ML helpers**: lead-time style forecasting, supplier **risk bands**, and **anomaly** flags on goods receipts. Outputs are saved as CSV/JSON and picked up by the apps.
+- **Shows everything in a browser**:
+  - **Main experience:** a **Plotly Dash** dashboard with five tabs (executive view, scorecards, lead time, quality/receipts, communications & contracts).
+  - **Optional:** a **FastAPI** backend plus a **React (Vite)** frontend that reads the same generated files for a lighter API-driven UI.
 
 ---
 
-## 🗂 Project Structure
-* `app.py`: The main Plotly Dash web server and frontend code.
-* `models.py`: Scikit-learn machine learning pipelines.
-* `generate_data.py`: Script to construct the database schema and populate it with synthetic records.
-* `schema.sql`: Raw SQL definition of the database.
-* `report.md` & `presentation_outline.md`: Academic deliverables and documentation.
-* `requirements.txt`: Python package dependencies.
+## Tech stack
+
+| Area | Tools |
+|------|--------|
+| Data | Python, SQLite, pandas |
+| ML | scikit-learn, statsmodels (and related libs in `requirements.txt`) |
+| Main UI | Plotly Dash, Dash Bootstrap Components |
+| Optional API/UI | FastAPI, Uvicorn, React, Vite |
 
 ---
 
-## React + FastAPI (Simple UI)
+## Prerequisites
 
-This repository now also includes a minimal full-stack version:
-- `backend/main.py` (FastAPI)
-- `frontend/` (React + Vite)
+- **Python 3.10+** (`python --version` or `python3 --version`)
+- For the optional React app: **Node.js** (includes `npm`)
 
-### 1) Start Backend
+---
+
+## Quick start (main Dash dashboard)
+
+Run these from the **project root** (the folder that contains `app.py`).
+
+1. **Create and activate a virtual environment** (recommended)
+
+   ```bash
+   python -m venv venv
+   ```
+
+   - **Windows:** `venv\Scripts\activate`
+   - **macOS/Linux:** `source venv/bin/activate`
+
+2. **Install Python dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Generate the database and sample CSV data**
+
+   ```bash
+   python generate_data.py
+   ```
+
+4. **Train models and write ML outputs** (CSV/JSON used by the dashboard)
+
+   ```bash
+   python models.py
+   ```
+
+5. **Start the dashboard**
+
+   ```bash
+   python app.py
+   ```
+
+6. **Open in your browser:** [http://127.0.0.1:8050/](http://127.0.0.1:8050/)  
+   Stop the server with `Ctrl+C` in the terminal.
+
+> **Note:** If `python` is not found, try `py` (Windows) or `python3` (macOS/Linux).
+
+---
+
+## Optional: React UI + FastAPI
+
+Use this if you want a separate REST API and a minimal React front end. **Complete steps 1–4 above first** so CSVs and `model_metrics.json` exist.
+
+**Terminal 1 — API**
+
 ```bash
 pip install -r requirements.txt
 uvicorn backend.main:app --reload --port 8000
 ```
 
-### 2) Start Frontend
+**Terminal 2 — Frontend**
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Open: `http://127.0.0.1:5173`
+- **API:** [http://127.0.0.1:8000](http://127.0.0.1:8000) (e.g. [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) for interactive docs)
+- **React app:** [http://127.0.0.1:5173](http://127.0.0.1:5173)
 
-### Available API Endpoints
-- `GET /api/health`
-- `GET /api/summary`
-- `GET /api/risk-suppliers?limit=10`
-- `GET /api/anomalies?limit=15`
-- `GET /api/leadtime-forecast`
-- `GET /api/model-metrics`
+**Example endpoints:** `GET /api/health`, `GET /api/summary`, `GET /api/risk-suppliers`, `GET /api/anomalies`, `GET /api/leadtime-forecast`, `GET /api/model-metrics`
+
+---
+
+## Project layout (important files)
+
+| File / folder | Role |
+|---------------|------|
+| `generate_data.py` | Builds `scm_p6.db` and CSVs from synthetic scenarios |
+| `schema.sql` | SQL schema reference |
+| `models.py` | Trains models; writes predictions, risk scores, anomalies, metrics |
+| `app.py` | Dash dashboard (main UI) |
+| `scm_p6.db` | SQLite database (created by `generate_data.py`) |
+| `*.csv`, `model_metrics.json` | Data + ML outputs used by `app.py` and `backend/` |
+| `backend/main.py` | FastAPI app (optional) |
+| `frontend/` | React + Vite app (optional) |
+| `assets/dashboard.css` | Dash styling |
+| `report.md`, `presentation_outline.md` | Course/report materials |
+| `END_TO_END_PROJECT_EXPLANATION.md` | Longer architecture and business walkthrough |
+
+---
+
+## Troubleshooting
+
+- **Empty charts or errors in Dash:** Run `generate_data.py` then `models.py` again so the database and ML files match.
+- **API or React errors:** Confirm CSVs and `model_metrics.json` exist in the project root after running `models.py`.
+
+---
+
+## Academic context
+
+Built for **SCME P6 — Supplier Relationship Management (SRM)**. For deeper detail on architecture, models, and dashboard pages, see `END_TO_END_PROJECT_EXPLANATION.md` and `report.md`.
