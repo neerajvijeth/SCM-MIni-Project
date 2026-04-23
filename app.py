@@ -71,11 +71,15 @@ def load_all_data():
 
     # Parse dates
     for col in ["order_date", "expected_delivery", "actual_delivery"]:
-        data["purchase_orders"][col] = pd.to_datetime(data["purchase_orders"][col])
-    data["communications"]["comm_date"] = pd.to_datetime(data["communications"]["comm_date"])
-    data["contracts"]["start_date"] = pd.to_datetime(data["contracts"]["start_date"])
-    data["contracts"]["end_date"] = pd.to_datetime(data["contracts"]["end_date"])
-    data["inspections"]["inspection_date"] = pd.to_datetime(data["inspections"]["inspection_date"])
+        data["purchase_orders"][col] = pd.to_datetime(data["purchase_orders"][col], errors="coerce")
+    data["communications"]["comm_date"] = pd.to_datetime(data["communications"]["comm_date"], errors="coerce")
+    data["contracts"]["start_date"] = pd.to_datetime(data["contracts"]["start_date"], errors="coerce")
+    data["contracts"]["end_date"] = pd.to_datetime(data["contracts"]["end_date"], errors="coerce")
+    data["inspections"]["inspection_date"] = pd.to_datetime(data["inspections"]["inspection_date"], errors="coerce")
+
+    # Parse predictions month column if present
+    if not data["predictions"].empty and "month" in data["predictions"].columns:
+        data["predictions"]["month"] = pd.to_datetime(data["predictions"]["month"], errors="coerce")
 
     return data
 
@@ -227,6 +231,8 @@ def page_scorecard():
         # Merge with supplier details
         supp = DATA["suppliers"][["supplier_id", "country"]].copy()
         table_df = risk_df.merge(supp, on="supplier_id", how="left")
+        if "risk_label" not in table_df.columns:
+            table_df["risk_label"] = table_df.get("predicted_label", "Unknown")
 
         # Compute avg lead time per supplier
         po_completed = DATA["purchase_orders"][
@@ -242,6 +248,7 @@ def page_scorecard():
 
         table_data = table_df.to_dict("records")
         table_columns = [
+            {"name": "Supplier ID", "id": "supplier_id"},
             {"name": "Supplier", "id": "name"},
             {"name": "Category", "id": "category"},
             {"name": "Country", "id": "country"},
@@ -268,6 +275,7 @@ def page_scorecard():
                             id="scorecard-table",
                             columns=table_columns,
                             data=table_data,
+                            hidden_columns=["supplier_id"],
                             sort_action="native",
                             filter_action="native",
                             page_size=10,
@@ -483,6 +491,14 @@ def filter_pos(start_date, end_date, category):
     return po
 
 
+def safe_period_to_timestamp(series):
+    """Safely convert a Period series to Timestamps, handling already-Timestamp series."""
+    try:
+        return series.dt.to_timestamp()
+    except AttributeError:
+        return pd.to_datetime(series.astype(str))
+
+
 # ============================================================
 # PAGE 1 CALLBACKS — Executive Overview
 # ============================================================
@@ -506,6 +522,7 @@ def update_executive(start_date, end_date, category):
     active_suppliers = suppliers[suppliers["is_active"] == 1].shape[0]
 
     completed = po[po["status"].isin(["Delivered", "Delayed"])].copy()
+    completed = completed[completed["actual_delivery"].notna()].copy()
     if not completed.empty:
         completed["on_time"] = completed["actual_delivery"] <= completed["expected_delivery"]
         ontime_pct = round(completed["on_time"].mean() * 100, 1)
@@ -562,6 +579,7 @@ def update_executive(start_date, end_date, category):
         )
     else:
         fig_ontime = go.Figure()
+        fig_ontime.update_layout(title="No data for selected filters", height=400)
 
     # ---- Pie chart: PO Status Distribution ----
     status_counts = po["status"].value_counts()
@@ -581,35 +599,40 @@ def update_executive(start_date, end_date, category):
 
     # ---- Line chart: Monthly PO count & value ----
     po_monthly = po.copy()
-    po_monthly["year_month"] = po_monthly["order_date"].dt.to_period("M")
-    monthly_agg = po_monthly.groupby("year_month").agg(
-        po_count=("po_id", "count"),
-        total_value=("total_value", "sum"),
-    ).reset_index()
-    monthly_agg["year_month"] = monthly_agg["year_month"].dt.to_timestamp()
+    po_monthly = po_monthly[po_monthly["order_date"].notna()].copy()
+    if not po_monthly.empty:
+        po_monthly["year_month"] = po_monthly["order_date"].dt.to_period("M")
+        monthly_agg = po_monthly.groupby("year_month").agg(
+            po_count=("po_id", "count"),
+            total_value=("total_value", "sum"),
+        ).reset_index()
+        monthly_agg["year_month"] = monthly_agg["year_month"].dt.to_timestamp()
 
-    fig_monthly = go.Figure()
-    fig_monthly.add_trace(go.Bar(
-        x=monthly_agg["year_month"], y=monthly_agg["po_count"],
-        name="PO Count", marker_color=COLORS["accent"], opacity=0.7,
-        yaxis="y",
-    ))
-    fig_monthly.add_trace(go.Scatter(
-        x=monthly_agg["year_month"],
-        y=monthly_agg["total_value"],
-        name="Total Value (₹)",
-        line=dict(color=COLORS["danger"], width=2),
-        yaxis="y2",
-    ))
-    fig_monthly.update_layout(
-        title="Monthly PO Count & Value",
-        xaxis_title="Month",
-        yaxis=dict(title="PO Count", side="left"),
-        yaxis2=dict(title="Total Value (₹)", side="right", overlaying="y"),
-        height=400, margin=dict(l=20, r=20, t=40, b=20),
-        legend=dict(x=0.01, y=0.99),
-        plot_bgcolor="white",
-    )
+        fig_monthly = go.Figure()
+        fig_monthly.add_trace(go.Bar(
+            x=monthly_agg["year_month"], y=monthly_agg["po_count"],
+            name="PO Count", marker_color=COLORS["accent"], opacity=0.7,
+            yaxis="y",
+        ))
+        fig_monthly.add_trace(go.Scatter(
+            x=monthly_agg["year_month"],
+            y=monthly_agg["total_value"],
+            name="Total Value (₹)",
+            line=dict(color=COLORS["danger"], width=2),
+            yaxis="y2",
+        ))
+        fig_monthly.update_layout(
+            title="Monthly PO Count & Value",
+            xaxis_title="Month",
+            yaxis=dict(title="PO Count", side="left"),
+            yaxis2=dict(title="Total Value (₹)", side="right", overlaying="y"),
+            height=400, margin=dict(l=20, r=20, t=40, b=20),
+            legend=dict(x=0.01, y=0.99),
+            plot_bgcolor="white",
+        )
+    else:
+        fig_monthly = go.Figure()
+        fig_monthly.update_layout(title="No data for selected filters", height=400)
 
     # ---- Horizontal bar: Avg Lead Time by Category ----
     if not completed.empty:
@@ -630,6 +653,7 @@ def update_executive(start_date, end_date, category):
         )
     else:
         fig_cat = go.Figure()
+        fig_cat.update_layout(title="No data for selected filters", height=400)
 
     return kpi_cards, fig_ontime, fig_status, fig_monthly, fig_cat
 
@@ -651,18 +675,35 @@ def update_radar(selected_rows, table_data):
         )
         return fig
 
-    row = table_data[selected_rows[0]]
+    row_idx = selected_rows[0]
+    if row_idx >= len(table_data):
+        return go.Figure()
+
+    row = table_data[row_idx]
     supplier_name = row.get("name", "")
     supplier_cat = row.get("category", "")
     supplier_id = row.get("supplier_id", "")
 
     # Get supplier metrics
     risk_df = DATA["risk_scores"]
+    if not supplier_id:
+        fallback = risk_df[
+            (risk_df["name"] == supplier_name) & (risk_df["category"] == supplier_cat)
+        ]
+        if fallback.empty:
+            fallback = risk_df[risk_df["name"] == supplier_name]
+        if not fallback.empty:
+            supplier_id = fallback.iloc[0]["supplier_id"]
     supp = risk_df[risk_df["supplier_id"] == supplier_id]
     cat_avg = risk_df[risk_df["category"] == supplier_cat]
 
     if supp.empty:
-        return go.Figure()
+        fig = go.Figure()
+        fig.update_layout(
+            title="Supplier details unavailable for the selected row",
+            height=400,
+        )
+        return fig
 
     s = supp.iloc[0]
 
@@ -687,8 +728,9 @@ def update_radar(selected_rows, table_data):
         on="po_id", how="inner"
     )
     supp_receipts = receipts[receipts["supplier_id"] == supplier_id]
-    if not supp_receipts.empty:
-        fulfillment = min(100, (supp_receipts["received_quantity"].sum() / supp_receipts["quantity"].sum()) * 100)
+    total_qty = supp_receipts["quantity"].sum() if not supp_receipts.empty else 0
+    if total_qty > 0:
+        fulfillment = min(100, (supp_receipts["received_quantity"].sum() / total_qty) * 100)
     else:
         fulfillment = 90
 
@@ -835,6 +877,8 @@ def update_scorecard_scatter(_):
 
 # ============================================================
 # PAGE 3 CALLBACKS — Lead Time & Forecasting
+# BUG FIX: Use ALL purchase orders (not category-filtered) for supplier-specific
+#          lead time charts. Category filter only applies to variance + box charts.
 # ============================================================
 @app.callback(
     [Output("lt-historical-line", "figure"),
@@ -847,34 +891,67 @@ def update_scorecard_scatter(_):
      Input("category-filter", "value")],
 )
 def update_lead_time(selected_suppliers, start_date, end_date, category):
-    po = filter_pos(start_date, end_date, category)
-    completed = po[po["actual_delivery"].notna()].copy()
-    completed["lead_time"] = (completed["actual_delivery"] - completed["order_date"]).dt.days
-    completed = completed[completed["lead_time"] > 0]
+    if isinstance(selected_suppliers, str):
+        selected_suppliers = [selected_suppliers]
+    if not selected_suppliers:
+        selected_suppliers = []
 
     suppliers = DATA["suppliers"]
 
+    # --- Use ALL POs (date-filtered only) for historical & forecast lines ---
+    # so that supplier-specific charts work regardless of category filter
+    all_po = DATA["purchase_orders"].copy()
+    if start_date:
+        all_po = all_po[all_po["order_date"] >= pd.to_datetime(start_date)]
+    if end_date:
+        all_po = all_po[all_po["order_date"] <= pd.to_datetime(end_date)]
+
+    all_completed = all_po[all_po["actual_delivery"].notna()].copy()
+    all_completed["lead_time"] = (
+        all_completed["actual_delivery"] - all_completed["order_date"]
+    ).dt.days
+    all_completed = all_completed[all_completed["lead_time"] > 0]
+
+    # --- Category-filtered POs for variance + box charts ---
+    po = filter_pos(start_date, end_date, category)
+    completed = po[po["actual_delivery"].notna()].copy()
+    if not completed.empty:
+        completed["lead_time"] = (
+            completed["actual_delivery"] - completed["order_date"]
+        ).dt.days
+        completed = completed[completed["lead_time"] > 0]
+
     # ---- Historical Line: Monthly avg lead time per selected supplier ----
     fig_hist = go.Figure()
-    if selected_suppliers and not completed.empty:
+    if selected_suppliers and not all_completed.empty:
         for sid in selected_suppliers:
-            sid_data = completed[completed["supplier_id"] == sid].copy()
+            sid_data = all_completed[all_completed["supplier_id"] == sid].copy()
             if sid_data.empty:
                 continue
+            sid_data = sid_data[sid_data["order_date"].notna()].copy()
             sid_data["year_month"] = sid_data["order_date"].dt.to_period("M")
             monthly = sid_data.groupby("year_month")["lead_time"].mean().reset_index()
             monthly["year_month"] = monthly["year_month"].dt.to_timestamp()
-            name = suppliers[suppliers["supplier_id"] == sid]["name"].values
-            name = name[0] if len(name) > 0 else sid
+            monthly = monthly.sort_values("year_month")
+
+            name_row = suppliers[suppliers["supplier_id"] == sid]["name"].values
+            name = name_row[0] if len(name_row) > 0 else sid
+
             fig_hist.add_trace(go.Scatter(
-                x=monthly["year_month"], y=monthly["lead_time"],
-                mode="lines+markers", name=name,
+                x=monthly["year_month"],
+                y=monthly["lead_time"],
+                mode="lines+markers",
+                name=name,
                 line=dict(width=2),
             ))
+
     fig_hist.update_layout(
         title="Historical Monthly Average Lead Time",
-        xaxis_title="Month", yaxis_title="Lead Time (days)",
-        height=400, margin=dict(l=20, r=20, t=40, b=20),
+        xaxis_title="Month",
+        yaxis_title="Lead Time (days)",
+        xaxis=dict(type="date"),
+        height=400,
+        margin=dict(l=20, r=20, t=40, b=20),
         plot_bgcolor="white",
         legend=dict(x=0, y=1),
     )
@@ -882,61 +959,92 @@ def update_lead_time(selected_suppliers, start_date, end_date, category):
     # ---- Forecast Chart ----
     fig_forecast = go.Figure()
     predictions = DATA["predictions"]
+
     if not predictions.empty and selected_suppliers:
         for sid in selected_suppliers:
-            # Historical
-            sid_data = completed[completed["supplier_id"] == sid].copy()
+            name_row = suppliers[suppliers["supplier_id"] == sid]["name"].values
+            supplier_name = name_row[0] if len(name_row) > 0 else sid
+
+            # Historical for this supplier
+            sid_data = all_completed[all_completed["supplier_id"] == sid].copy()
             if not sid_data.empty:
+                sid_data = sid_data[sid_data["order_date"].notna()].copy()
                 sid_data["year_month"] = sid_data["order_date"].dt.to_period("M")
                 monthly_hist = sid_data.groupby("year_month")["lead_time"].mean().reset_index()
                 monthly_hist["year_month"] = monthly_hist["year_month"].dt.to_timestamp()
-                name = suppliers[suppliers["supplier_id"] == sid]["name"].values
-                name = name[0] if len(name) > 0 else sid
+                monthly_hist = monthly_hist.sort_values("year_month")
 
                 fig_forecast.add_trace(go.Scatter(
-                    x=monthly_hist["year_month"], y=monthly_hist["lead_time"],
-                    mode="lines", name=f"{name} (Historical)",
+                    x=monthly_hist["year_month"],
+                    y=monthly_hist["lead_time"],
+                    mode="lines",
+                    name=f"{supplier_name} (Historical)",
                     line=dict(width=2),
                 ))
 
-            # Forecast
-            sid_pred = predictions[predictions["supplier_id"] == sid]
+            # Forecast for this supplier
+            sid_pred = predictions[predictions["supplier_id"] == sid].copy()
             if not sid_pred.empty:
-                pred_dates = pd.to_datetime(sid_pred["month"])
+                # Ensure month column is datetime
+                if not pd.api.types.is_datetime64_any_dtype(sid_pred["month"]):
+                    sid_pred["month"] = pd.to_datetime(sid_pred["month"], errors="coerce")
+                sid_pred = sid_pred.dropna(subset=["month"]).sort_values("month")
+                pred_dates = sid_pred["month"]
+
                 fig_forecast.add_trace(go.Scatter(
-                    x=pred_dates, y=sid_pred["predicted_lead_time_days"],
-                    mode="lines+markers", name=f"{name} (Forecast)",
+                    x=pred_dates,
+                    y=sid_pred["predicted_lead_time_days"],
+                    mode="lines+markers",
+                    name=f"{supplier_name} (Forecast)",
                     line=dict(width=2, dash="dash"),
                 ))
+
                 # Confidence interval
-                fig_forecast.add_trace(go.Scatter(
-                    x=pd.concat([pred_dates, pred_dates[::-1]]),
-                    y=pd.concat([sid_pred["upper_95"], sid_pred["lower_95"][::-1]]),
-                    fill="toself",
-                    fillcolor="rgba(52,152,219,0.1)",
-                    line=dict(color="rgba(52,152,219,0)"),
-                    showlegend=False,
-                    name="95% CI",
-                ))
+                if {"upper_95", "lower_95"}.issubset(sid_pred.columns):
+                    x_combined = pd.concat([pred_dates, pred_dates.iloc[::-1]])
+                    y_combined = pd.concat([sid_pred["upper_95"], sid_pred["lower_95"].iloc[::-1]])
+                    fig_forecast.add_trace(go.Scatter(
+                        x=x_combined,
+                        y=y_combined,
+                        fill="toself",
+                        fillcolor="rgba(52,152,219,0.1)",
+                        line=dict(color="rgba(52,152,219,0)"),
+                        showlegend=False,
+                        name="95% CI",
+                    ))
 
     fig_forecast.update_layout(
         title="Lead Time Forecast (3-Month Ahead with 95% CI)",
-        xaxis_title="Month", yaxis_title="Lead Time (days)",
-        height=400, margin=dict(l=20, r=20, t=40, b=20),
+        xaxis_title="Month",
+        yaxis_title="Lead Time (days)",
+        xaxis=dict(type="date"),
+        height=400,
+        margin=dict(l=20, r=20, t=40, b=20),
         plot_bgcolor="white",
     )
 
-    # ---- Variance Bar ----
-    if not completed.empty:
-        variance = completed.groupby("supplier_id")["lead_time"].std().reset_index()
+    # ---- Variance Bar (uses category-filtered data) ----
+    # Use all_completed for variance so it's not empty when a specific category is set
+    # and none of the selected suppliers belong to it
+    variance_source = all_completed if completed.empty else completed
+
+    if not variance_source.empty:
+        variance = variance_source.groupby("supplier_id")["lead_time"].std().reset_index()
         variance.columns = ["supplier_id", "lt_variance"]
         variance = variance.dropna().sort_values("lt_variance", ascending=False)
         variance = variance.merge(suppliers[["supplier_id", "name"]], on="supplier_id", how="left")
 
+        # Filter to suppliers in the selected category if a category filter is active
+        if category and category != "All":
+            cat_suppliers = suppliers[suppliers["category"] == category]["supplier_id"].tolist()
+            variance = variance[variance["supplier_id"].isin(cat_suppliers)]
+
         colors = [COLORS["danger"] if v > 7 else COLORS["accent"] for v in variance["lt_variance"]]
         fig_var = go.Figure(go.Bar(
-            x=variance["lt_variance"].round(1), y=variance["name"],
-            orientation="h", marker_color=colors,
+            x=variance["lt_variance"].round(1),
+            y=variance["name"],
+            orientation="h",
+            marker_color=colors,
             text=variance["lt_variance"].round(1),
             textposition="auto",
         ))
@@ -944,30 +1052,34 @@ def update_lead_time(selected_suppliers, start_date, end_date, category):
                          annotation_text="High Unpredictability (>7 days)")
         fig_var.update_layout(
             title="Lead Time Variance by Supplier",
-            xaxis_title="Std Dev (days)", yaxis_title="",
-            height=max(400, len(variance) * 20),
+            xaxis_title="Std Dev (days)",
+            yaxis_title="",
+            height=max(400, len(variance) * 22),
             margin=dict(l=20, r=20, t=40, b=20),
             yaxis=dict(autorange="reversed"),
             plot_bgcolor="white",
         )
     else:
         fig_var = go.Figure()
+        fig_var.update_layout(title="No data for selected filters", height=400)
 
-    # ---- Box Plot: Lead Time by Category ----
-    if not completed.empty:
+    # ---- Box Plot: Lead Time by Category (always uses all date-filtered POs) ----
+    if not all_completed.empty:
         fig_box = go.Figure()
         for cat in CATEGORIES:
-            cat_data = completed[completed["category"] == cat]["lead_time"]
+            cat_data = all_completed[all_completed["category"] == cat]["lead_time"]
             if not cat_data.empty:
                 fig_box.add_trace(go.Box(y=cat_data, name=cat))
         fig_box.update_layout(
             title="Lead Time Distribution by Material Category",
             yaxis_title="Lead Time (days)",
-            height=400, margin=dict(l=20, r=20, t=40, b=20),
+            height=400,
+            margin=dict(l=20, r=20, t=40, b=20),
             plot_bgcolor="white",
         )
     else:
         fig_box = go.Figure()
+        fig_box.update_layout(title="No data for selected filters", height=400)
 
     return fig_hist, fig_forecast, fig_var, fig_box
 
@@ -1015,60 +1127,74 @@ def update_quality(start_date, end_date, category):
     )
 
     # ---- Scatter: Defect Rate vs Delay ----
-    # Join inspections with PO data
     insp_po = filtered_insp.merge(receipts[["receipt_id", "po_id"]], on="receipt_id", how="left")
     insp_po = insp_po.merge(
         po[["po_id", "supplier_id", "category", "quantity", "expected_delivery", "actual_delivery"]],
         on="po_id", how="inner"
     )
+    insp_po = insp_po[insp_po["actual_delivery"].notna() & insp_po["expected_delivery"].notna()].copy()
     insp_po["delay_days"] = (insp_po["actual_delivery"] - insp_po["expected_delivery"]).dt.days
 
-    fig_scat = px.scatter(
-        insp_po, x="delay_days", y="defect_rate_pct",
-        color="category", size="quantity",
-        hover_data=["supplier_id"],
-        title="Defect Rate vs Delivery Delay",
-        labels={"delay_days": "Delivery Delay (days)", "defect_rate_pct": "Defect Rate (%)"},
-        height=400,
-    )
-    fig_scat.update_layout(margin=dict(l=20, r=20, t=40, b=20), plot_bgcolor="white")
+    if not insp_po.empty:
+        fig_scat = px.scatter(
+            insp_po, x="delay_days", y="defect_rate_pct",
+            color="category", size="quantity",
+            hover_data=["supplier_id"],
+            title="Defect Rate vs Delivery Delay",
+            labels={"delay_days": "Delivery Delay (days)", "defect_rate_pct": "Defect Rate (%)"},
+            height=400,
+        )
+        fig_scat.update_layout(margin=dict(l=20, r=20, t=40, b=20), plot_bgcolor="white")
+    else:
+        fig_scat = go.Figure()
+        fig_scat.update_layout(title="No data for selected filters", height=400)
 
     # ---- Heatmap: Defect Rate by Supplier × Month ----
-    insp_supp = insp_po.copy()
-    insp_supp = insp_supp.merge(suppliers[["supplier_id", "name"]], on="supplier_id", how="left")
-    insp_supp["month"] = insp_supp["inspection_date"].dt.to_period("M").astype(str)
+    if not filtered_insp.empty and not insp_po.empty:
+        insp_supp = insp_po.copy()
+        insp_supp = insp_supp.merge(suppliers[["supplier_id", "name"]], on="supplier_id", how="left")
+        insp_supp["month"] = insp_supp["inspection_date"].dt.to_period("M").astype(str)
 
-    # Top 15 worst suppliers by avg defect rate
-    top15_worst = insp_supp.groupby("name")["defect_rate_pct"].mean().nlargest(15).index.tolist()
-    heatmap_data = insp_supp[insp_supp["name"].isin(top15_worst)]
-    pivot = heatmap_data.pivot_table(
-        values="defect_rate_pct", index="name", columns="month", aggfunc="mean"
-    ).fillna(0)
+        top15_worst = insp_supp.groupby("name")["defect_rate_pct"].mean().nlargest(15).index.tolist()
+        heatmap_data = insp_supp[insp_supp["name"].isin(top15_worst)]
+        if not heatmap_data.empty:
+            pivot = heatmap_data.pivot_table(
+                values="defect_rate_pct", index="name", columns="month", aggfunc="mean"
+            ).fillna(0)
 
-    fig_heat = go.Figure(data=go.Heatmap(
-        z=pivot.values,
-        x=pivot.columns.tolist(),
-        y=pivot.index.tolist(),
-        colorscale="RdYlGn_r",
-        text=np.round(pivot.values, 1),
-        texttemplate="%{text}",
-        colorbar_title="Defect %",
-    ))
-    fig_heat.update_layout(
-        title="Defect Rate Heatmap — Top 15 Worst Suppliers",
-        xaxis_title="Month", yaxis_title="",
-        height=450, margin=dict(l=20, r=20, t=40, b=20),
-    )
+            fig_heat = go.Figure(data=go.Heatmap(
+                z=pivot.values,
+                x=pivot.columns.tolist(),
+                y=pivot.index.tolist(),
+                colorscale="RdYlGn_r",
+                text=np.round(pivot.values, 1),
+                texttemplate="%{text}",
+                colorbar_title="Defect %",
+            ))
+            fig_heat.update_layout(
+                title="Defect Rate Heatmap — Top 15 Worst Suppliers",
+                xaxis_title="Month", yaxis_title="",
+                height=450, margin=dict(l=20, r=20, t=40, b=20),
+            )
+        else:
+            fig_heat = go.Figure()
+            fig_heat.update_layout(title="No data for heatmap", height=450)
+    else:
+        fig_heat = go.Figure()
+        fig_heat.update_layout(title="No data for selected filters", height=450)
 
     # ---- Donut: Inspection Result Breakdown ----
     result_counts = filtered_insp["inspection_result"].value_counts()
     color_map = {"Pass": COLORS["success"], "Fail": COLORS["danger"], "Conditional": COLORS["warning"]}
-    fig_donut = go.Figure(data=[go.Pie(
-        labels=result_counts.index, values=result_counts.values,
-        hole=0.5,
-        marker_colors=[color_map.get(r, "#ccc") for r in result_counts.index],
-        textinfo="label+percent",
-    )])
+    if not result_counts.empty:
+        fig_donut = go.Figure(data=[go.Pie(
+            labels=result_counts.index, values=result_counts.values,
+            hole=0.5,
+            marker_colors=[color_map.get(r, "#ccc") for r in result_counts.index],
+            textinfo="label+percent",
+        )])
+    else:
+        fig_donut = go.Figure()
     fig_donut.update_layout(
         title="Inspection Results Breakdown",
         height=450, margin=dict(l=20, r=20, t=40, b=20),
@@ -1078,11 +1204,19 @@ def update_quality(start_date, end_date, category):
     if not anomalies.empty:
         anom = anomalies[anomalies["is_anomaly"] == 1].copy()
         anom = anom.sort_values("anomaly_score", ascending=False)
-        anom_display = anom[["receipt_id", "supplier_name", "received_date",
-                             "defect_rate_pct", "fulfillment_ratio",
-                             "delivery_delay_days", "anomaly_score"]].head(20)
-        anom_display.columns = ["Receipt ID", "Supplier", "Date", "Defect %",
-                                "Fulfillment", "Delay Days", "Anomaly Score"]
+        # Only show columns that exist
+        desired_cols = ["receipt_id", "supplier_name", "received_date",
+                        "defect_rate_pct", "fulfillment_ratio",
+                        "delivery_delay_days", "anomaly_score"]
+        existing_cols = [c for c in desired_cols if c in anom.columns]
+        anom_display = anom[existing_cols].head(20)
+        col_rename = {
+            "receipt_id": "Receipt ID", "supplier_name": "Supplier",
+            "received_date": "Date", "defect_rate_pct": "Defect %",
+            "fulfillment_ratio": "Fulfillment", "delivery_delay_days": "Delay Days",
+            "anomaly_score": "Anomaly Score",
+        }
+        anom_display = anom_display.rename(columns={k: v for k, v in col_rename.items() if k in anom_display.columns})
 
         anomaly_table = dash_table.DataTable(
             columns=[{"name": c, "id": c} for c in anom_display.columns],
@@ -1198,6 +1332,7 @@ def update_comms(start_date, end_date, category):
 
     # ---- Timeline: Contract Gantt Chart ----
     ct = contracts.merge(suppliers[["supplier_id", "name"]], on="supplier_id", how="left")
+    ct = ct[ct["start_date"].notna() & ct["end_date"].notna()].copy()
     ct = ct.sort_values("end_date")
 
     color_map = {
@@ -1207,15 +1342,12 @@ def update_comms(start_date, end_date, category):
 
     fig_timeline = go.Figure()
 
-    # Build Gantt chart using Scatter traces per contract
     for idx, (_, row) in enumerate(ct.iterrows()):
         color = color_map.get(row["renewal_status"], "#ccc")
         start_dt = pd.Timestamp(row["start_date"])
         end_dt = pd.Timestamp(row["end_date"])
         days_to_expiry = int((end_dt - pd.Timestamp(TODAY)) / pd.Timedelta(days=1))
-        border_color = "orange" if 0 < days_to_expiry <= 30 else color
 
-        # Use a scatter trace with a line for each contract
         fig_timeline.add_trace(go.Scatter(
             x=[start_dt, end_dt],
             y=[row["name"], row["name"]],
@@ -1231,7 +1363,6 @@ def update_comms(start_date, end_date, category):
             ),
         ))
 
-        # Orange marker for expiring contracts
         if 0 < days_to_expiry <= 30:
             fig_timeline.add_trace(go.Scatter(
                 x=[end_dt], y=[row["name"]],
@@ -1241,7 +1372,6 @@ def update_comms(start_date, end_date, category):
                 hovertemplate=f"⚠️ Expiring in {days_to_expiry} days<extra></extra>",
             ))
 
-    # Today line — use shape instead of add_vline to avoid Plotly 6.x annotation bug
     today_ts = pd.Timestamp(TODAY)
     fig_timeline.add_shape(
         type="line", x0=today_ts, x1=today_ts, y0=0, y1=1,
@@ -1255,10 +1385,10 @@ def update_comms(start_date, end_date, category):
     fig_timeline.update_layout(
         title="Contract Timeline — All Suppliers",
         xaxis_title="Date",
+        xaxis=dict(type="date"),
         height=max(500, len(ct) * 25),
         margin=dict(l=20, r=20, t=40, b=20),
         plot_bgcolor="white",
-        xaxis=dict(type="date"),
     )
 
     # ---- Table: Contracts Expiring Within 90 Days ----
@@ -1267,7 +1397,9 @@ def update_comms(start_date, end_date, category):
         (contracts["end_date"] <= pd.Timestamp(TODAY + timedelta(days=90)))
     ].copy()
     expiring_90 = expiring_90.merge(suppliers[["supplier_id", "name"]], on="supplier_id", how="left")
-    expiring_90["days_left"] = ((expiring_90["end_date"] - pd.Timestamp(TODAY)) / pd.Timedelta(days=1)).astype(int)
+    expiring_90["days_left"] = (
+        (expiring_90["end_date"] - pd.Timestamp(TODAY)) / pd.Timedelta(days=1)
+    ).astype(int)
     expiring_90 = expiring_90.sort_values("days_left")
 
     exp_display = expiring_90[["name", "value_inr", "end_date", "sla_lead_time_days",
@@ -1317,18 +1449,24 @@ def update_comms(start_date, end_date, category):
 
     # ---- Bar: SLA Breach Count per Supplier (Top 15) ----
     completed_po = po[po["actual_delivery"].notna()].copy()
-    completed_po["breach"] = (completed_po["actual_delivery"] > completed_po["expected_delivery"]).astype(int)
-    breach_counts = completed_po.groupby("supplier_id")["breach"].sum().reset_index()
-    breach_counts = breach_counts.merge(suppliers[["supplier_id", "name"]], on="supplier_id", how="left")
-    breach_counts = breach_counts.nlargest(15, "breach").sort_values("breach")
+    if not completed_po.empty:
+        completed_po["breach"] = (
+            completed_po["actual_delivery"] > completed_po["expected_delivery"]
+        ).astype(int)
+        breach_counts = completed_po.groupby("supplier_id")["breach"].sum().reset_index()
+        breach_counts = breach_counts.merge(suppliers[["supplier_id", "name"]], on="supplier_id", how="left")
+        breach_counts = breach_counts.nlargest(15, "breach").sort_values("breach")
 
-    fig_breach = go.Figure(go.Bar(
-        x=breach_counts["breach"], y=breach_counts["name"],
-        orientation="h",
-        marker_color=COLORS["danger"],
-        text=breach_counts["breach"],
-        textposition="auto",
-    ))
+        fig_breach = go.Figure(go.Bar(
+            x=breach_counts["breach"], y=breach_counts["name"],
+            orientation="h",
+            marker_color=COLORS["danger"],
+            text=breach_counts["breach"],
+            textposition="auto",
+        ))
+    else:
+        fig_breach = go.Figure()
+
     fig_breach.update_layout(
         title="SLA Breach Count — Top 15 Suppliers",
         xaxis_title="Breaches", yaxis_title="",
